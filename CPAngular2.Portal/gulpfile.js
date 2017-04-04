@@ -16,6 +16,8 @@ console.log(version);
 
 var foreach = require("gulp-foreach");
 var path = require("path");
+var bootlint = require('gulp-bootlint');
+
 
 var Builder = require('systemjs-builder');
 var inlineNg2Template = require('gulp-inline-ng2-template');
@@ -186,6 +188,12 @@ gulp.task('sync', function () {
     gulp.watch("*.cshtml").on('change', browserSync.reload);
 
 });
+
+gulp.task('bootlint', function () {
+    return gulp.src('./index.html')
+        .pipe(bootlint());
+});
+
 //
 //  default task
 //

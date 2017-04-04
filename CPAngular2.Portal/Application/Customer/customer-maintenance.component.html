@@ -19,105 +19,91 @@
                 <div class="panel-body">
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="tab1default">
-
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label required">Anrede</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <select type="text" class="form-control" [(ngModel)]="salutation" [ngClass]="{'validation-error': salutationInputError}">
-                                        <option name="Herr" value="Herr">Herr</option>
-                                        <option name="Frau" value="Frau">Frau</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" [(ngModel)]="Abteilung"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label required">Vorname</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" [(ngModel)]="companyVorname" [ngClass]="{'validation-error': companyVornameInputError}"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label required">Nachname </label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" [(ngModel)]="companyName" [ngClass]="{'validation-error': companyNameInputError}"/>
-                                </div>
-                            </div>
-
-
-                            <address-form [address]="address"></address-form>
-
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Telefon</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" [(ngModel)]="phoneNumber">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label required">Handy</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" [(ngModel)]="phoneNumber2">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label required">E-Mail</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" [(ngModel)]="eMail">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Photo</label>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-
-
-                                    <div class="button-container mtb20">
-                                        <label class="upload-button is-pulled-left">
-                                            <input type="file"
-                                                   class="hidden"
-                                                   ngFileSelect
-                                                   [options]="options"
-                                                   [events]="inputUploadEvents"
-                                                   (onUpload)="handleUpload($event)"
-                                                   (onPreviewData)="handlePreviewData($event)"
-                                                   (beforeUpload)="beforeUpload($event)">
-                                            Browse
-                                        </label>
+                            <div class="container" >
+                                <div class="col-lg-6 " >
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label required">Anrede</label>
+                                            <div class="col-sm-8">
+                                                <select type="text" class="form-control" [(ngModel)]="salutation" [ngClass]="{'validation-error': salutationInputError}">
+                                                    <option name="Herr" value="Herr">Herr</option>
+                                                    <option name="Frau" value="Frau">Frau</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <p>
-                                        Allowed extensions: <code><b>.jpg</b>, <b>.png</b></code>
-                                    </p>
-
-                                    <div>
-                                        <button type="button" class="start-upload-button" (click)="startUpload()">Start Upload</button>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="Abteilung" />
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div *ngIf="response">
-                                        <pre><code></code></pre>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label required">Vorname</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="companyVorname" [ngClass]="{'validation-error': companyVornameInputError}" />
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div *ngIf="errorMessage">
-                                        <span></span>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label required">Nachname </label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="companyName" [ngClass]="{'validation-error': companyNameInputError}" />
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div *ngIf="previewData && !response">
-                                        <img [src]="previewData">
+                                    <div class="row">
+                                        <address-form [address]="address"></address-form>
                                     </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Telefon</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="phoneNumber">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label required">Handy</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="phoneNumber2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label required">E-Mail</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="eMail">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Photo</label>
+                                            <div class="col-sm-8">
 
+                                                <input type="file" name="photo" required (change)="fileChange(input)" #input />
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6" >
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <img [attr.src]='file_srcs[0]' alt="" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="tab-pane fade" id="tab2default">
                             
