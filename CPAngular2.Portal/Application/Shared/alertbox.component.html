@@ -1,0 +1,6 @@
+﻿
+<div style="padding-top:20px">
+    <alert *ngFor="let alert of alerts; let i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)">
+        <div [innerHTML]="messageBox"></div>
+    </alert>
+</div>

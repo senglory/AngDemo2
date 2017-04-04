@@ -1,0 +1,32 @@
+﻿<div class="mtb20">
+    <label class="upload-button is-pulled-left">
+        <input type="file"
+               class="hidden"
+               ngFileSelect
+               [options]="options"
+               [events]="inputUploadEvents"
+               (onUpload)="handleUpload($event)"
+               (onPreviewData)="handlePreviewData($event)"
+               (beforeUpload)="beforeUpload($event)">
+        Browse
+    </label>
+</div>
+
+<p>
+    Allowed extensions: <b>.jpg</b>, <b>.png</b>
+</p>
+
+<div>
+    <button type="button" class="start-upload-button" (click)="startUpload()">Start Upload</button>
+</div>
+
+<div *ngIf="response">
+</div>
+
+<div *ngIf="errorMessage">
+    <span></span>
+</div>
+
+<div *ngIf="previewData && !response">
+    <img [src]="previewData" />
+</div>

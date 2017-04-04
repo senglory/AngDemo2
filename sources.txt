@@ -1,0 +1,20 @@
+Tabs:
+http://bootsnipp.com/snippets/featured/panels-with-nav-tabs
+
+Microsoft.Typescript.targets from here:
+https://gist.github.com/jamietre/c0face4a1e351694977e0791c70f0d28
+
+
+
+
+
+import { NgUploaderModule } from 'ngx-uploader';
+import {NgUploaderComponent} from './ngx-uploader.component';
+
+
+
+
+,  
+'ngx-uploader': 'node_modules/ngx-uploader/bundle/ngx-uploader.umd.js'
+
+

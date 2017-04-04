@@ -1,0 +1,95 @@
+﻿
+@{
+
+
+    string title = System.Configuration.ConfigurationManager.AppSettings["Title"].ToString();
+    Boolean includeBrowserSync = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["IncludeBrowserSync"]);
+    string version = typeof(CodeProjectAngular2.Portal.RouteConfig).Assembly.GetName().Version.ToString();
+
+
+    string currentRoute = "/";
+
+    foreach (string key in HttpContext.Current.Request.QueryString.AllKeys) // <-- No duplicates returned.
+    {
+        if (key == "CurrentRoute")
+        {
+            currentRoute = HttpContext.Current.Request.QueryString[key];
+        }
+    }
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+
+    <base href="/" />
+    <script>
+        history.pushState({}, null, "@currentRoute");
+    </script>
+
+
+    <!-- Polyfill(s) for older browsers -->
+
+    <!--<script src="~/Scripts/core.min.js"></script>-->
+    <!--<script src="~/node_modules/es6-shim/es6-shim.min.js"></script>-->
+    
+    <script src="~/node_modules/core-js/client/shim.min.js"></script>
+    <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="~/node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="~/node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="~/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="~/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!--
+    
+    @*<link href="~/Application/Content/bootstrap.css" rel="stylesheet" />*@
+    
+    @if (HttpContext.Current.IsDebuggingEnabled)
+    {
+        <!--<script src="~/node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>-->
+
+        <!-- 2. Configure SystemJS -->
+        <script src="~/systemjs.config.js"></script>
+        <script>
+            System.import('application').catch(function (err) { console.error(err); });
+        </script>
+    }
+    <script>
+        $(document).ready(function () {
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+        });
+    </script>
+
+    <link href="Application/Content/Style.css" rel="stylesheet" />
+    <link href="Application/Content/spinner.css" rel="stylesheet" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <codeproject-application title="@title" currentRoute="@currentRoute" version="@version">
+        <div>
+            ...loading
+        </div>
+    </codeproject-application>
+
+    @if (HttpContext.Current.IsDebuggingEnabled == true && includeBrowserSync == true)
+    {
+            <!-- BrowserSync:SNIPPET-->
+        <script type='text/javascript' id="__bs_script__">
+            //<![CDATA[
+            document.write("<script async src='http://HOST:PORT/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname).replace("PORT", parseInt(location.port) + 1));
+            //]]>
+        </script>
+            <!-- BS:BrowserSyncs:END-->
+    }
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>        
+            <a class="navbar-brand" [routerLink]="['/home/home']">{{title}}</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav">
+                <li><a [routerLink]="['/home/home']">Home</a></li>
+                <!--<li><a [routerLink]="['/home/about']">About</a></li>
+                <li><a [routerLink]="['/home/contact']">Contact</a></li>-->        
+                   
+            </ul>                   
+            
+            <ul class="nav navbar-nav" >
+            <!--    <li><a [routerLink]="['/home/importcustomers']">Import Customers</a></li>   -->   
+                <li><a [routerLink]="['/customer/customermaintenance']">Provider Maintenance</a></li>        
+                <li><a [routerLink]="['/customer/customerinquiry']">Provider Inquiry</a></li>          
+            </ul>
+                        
+            <ul class="nav navbar-nav navbar-right" >               
+                <li><a [routerLink]="['/home/register']">Register</a></li>
+                <li><a [routerLink]="['/home/login']">Login</a></li>
+            </ul>               
+
+            <ul class="nav navbar-nav navbar-right" [hidden]="!isAuthenicated">
+                <li><a [routerLink]="['/user/profile']">{{firstName}}&nbsp;{{lastName}}&nbsp;</a></li>
+                <li><a style="cursor:pointer" (click)="logout()">Logout</a></li>
+            </ul>
+            
+                 
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container body-content" style="padding-top: 20px;">    
+    <router-outlet></router-outlet>    
+    <hr />
+    <footer>
+        <p>&copy; 2017 - My ASP.NET Application &nbsp;{{version}}</p>
+    </footer>
+</div>
+
+<div *ngIf="blockUI">
+    <div class="in modal-backdrop spinner-overlay"></div>
+    <div class="spinner-message-container" aria-live="assertive" aria-atomic="true">
+        <!--   <div class="spinner-message">loading...</div>-->
+        <div class="loading-message">
+            <img src="application/content/images/loading-spinner-grey.gif" class="rotate90">
+            <span>&nbsp;&nbsp;please wait...</span>
+        </div>
+
+    </div>
+</div>
+

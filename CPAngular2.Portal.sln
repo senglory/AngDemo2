@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPAngular2.Portal", "CPAngular2.Portal\CPAngular2.Portal.csproj", "{9149081F-85C0-4BE8-9E53-48493D58337A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPAngular2.Business.Entities", "CPAngular2.Business.Entities\CPAngular2.Business.Entities.csproj", "{7FB02A16-B59D-4358-8EE8-36550B2B404B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPAngular2.Business", "CPAngular2.Business\CPAngular2.Business.csproj", "{9A916577-1186-45EE-BE40-1C2B5D5F7809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPAngular2.Data.EntityFramework", "CPAngular2.Data.EntityFramework\CPAngular2.Data.EntityFramework.csproj", "{0B050F70-7E1B-402D-92A8-C6069B74D3BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPAngular2.Interfaces", "CPAngular2.Interfaces\CPAngular2.Interfaces.csproj", "{B6C2A829-5C8F-49A3-A2C6-6D2E14EF8881}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPAngular2.Business.Common", "CPAngular2.Business.Common\CPAngular2.Business.Common.csproj", "{B12D314C-BDD1-44F8-A2E1-5E9F2E668204}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28E0320F-F64F-49E1-B501-28C775AAC247}"
+	ProjectSection(SolutionItems) = preProject
+		sources.txt = sources.txt
+		sql1.sql = sql1.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9149081F-85C0-4BE8-9E53-48493D58337A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9149081F-85C0-4BE8-9E53-48493D58337A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9149081F-85C0-4BE8-9E53-48493D58337A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9149081F-85C0-4BE8-9E53-48493D58337A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB02A16-B59D-4358-8EE8-36550B2B404B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB02A16-B59D-4358-8EE8-36550B2B404B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB02A16-B59D-4358-8EE8-36550B2B404B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB02A16-B59D-4358-8EE8-36550B2B404B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A916577-1186-45EE-BE40-1C2B5D5F7809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A916577-1186-45EE-BE40-1C2B5D5F7809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A916577-1186-45EE-BE40-1C2B5D5F7809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A916577-1186-45EE-BE40-1C2B5D5F7809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B050F70-7E1B-402D-92A8-C6069B74D3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B050F70-7E1B-402D-92A8-C6069B74D3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B050F70-7E1B-402D-92A8-C6069B74D3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B050F70-7E1B-402D-92A8-C6069B74D3BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C2A829-5C8F-49A3-A2C6-6D2E14EF8881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C2A829-5C8F-49A3-A2C6-6D2E14EF8881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C2A829-5C8F-49A3-A2C6-6D2E14EF8881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C2A829-5C8F-49A3-A2C6-6D2E14EF8881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B12D314C-BDD1-44F8-A2E1-5E9F2E668204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B12D314C-BDD1-44F8-A2E1-5E9F2E668204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B12D314C-BDD1-44F8-A2E1-5E9F2E668204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B12D314C-BDD1-44F8-A2E1-5E9F2E668204}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
