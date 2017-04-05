@@ -379,6 +379,9 @@
       $(CompileTypeScriptDependsOn)
     </CompileTypeScriptDependsOn>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>rem Powershell -ExecutionPolicy bypass -File "$(ProjectDir)WaitForFiles.ps1" "$(ProjectDir)\"</PostBuildEvent>
+  </PropertyGroup>
   <Target Name="SpoofTypeScriptModuleResolution">
     <PropertyGroup>
       <TypeScriptBuildConfigurations>$(TypeScriptBuildConfigurations.Replace('--moduleResolution NodeJs', '--moduleResolution node'))</TypeScriptBuildConfigurations>

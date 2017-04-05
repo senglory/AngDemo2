@@ -33,10 +33,6 @@
     "zone.js": "^0.7.8"
   },
   "devDependencies": {
-    "browser-sync": "^2.13.0",
-    "concurrently": "^2.0.0",
-    "core-js": "^2.4.0",
-    "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-cache": "^0.4.5",
     "gulp-concat": "^2.6.0",
@@ -50,6 +46,10 @@
     "gulp-typescript": "^3.1.0",
     "gulp-uglify": "^1.5.3",
     "gulp-wait": "^0.0.2",
+    "browser-sync": "^2.13.0",
+    "concurrently": "^2.0.0",
+    "core-js": "^2.4.0",
+    "del": "^2.2.0",
     "line-by-line": "^0.1.5",
     "lite-server": "^2.2.0",
     "moment": "^2.13.0",

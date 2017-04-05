@@ -81,6 +81,7 @@ export class CustomerMaintenanceComponent implements OnInit {
     fileChange(inp) {
         this.readFiles(inp.files);
     }
+
     readFile(file, reader, callback) {
         reader.onload = () => {
             callback(reader.result);
@@ -90,27 +91,29 @@ export class CustomerMaintenanceComponent implements OnInit {
         reader.readAsDataURL(file);
     }
     readFiles(files, index = 0) {
-        alert('ffffffff');
         // Create the file reader  
         let reader = new FileReader();
         // If there is a file  
         if (index in files) {
             // Start reading this file  
             this.readFile(files[index], reader, (result) => {
+
                 // Create an img element and add the image file data to it  
                 var img = document.createElement("img");
+                img.setAttribute('id' , "dummy");
                 img.src = result;
                 // Send this img to the resize function (and wait for callback)  
-                this.resize(img, 250, 250, (resized_jpeg, before, after) => {
+                this.resize(img, 250, 250, (resized_pict, before, after) => {
                     // For debugging (size in bytes before and after)  
                     this.debug_size_before.push(before);
                     this.debug_size_after.push(after);
                     // Add the resized jpeg img source to a list for preview  
                     // This is also the file you want to upload. (either as a  
                     // base64 string or img.src = resized_jpeg if you prefer a file).  
-                    this.file_srcs.push(resized_jpeg);
+                    this.file_srcs.pop();
+                    this.file_srcs.push(resized_pict);
                     // Read the next file;  
-                    this.readFiles(files, index + 1);
+                    //this.readFiles(files, index + 1);
                 });
             });
         } else {
