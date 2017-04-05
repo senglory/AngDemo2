@@ -1139,6 +1139,7 @@ td.beauty-hover {
 .s {
   color: #d44950;
 }
+/*
 .radio, .checkbox, .radio-inline, .checkbox-inline {
   position: relative;
 }
@@ -1179,6 +1180,7 @@ td.beauty-hover {
 .radio input[type=radio]:checked + i:before, .radio-inline input[type=radio]:checked + i:before {
   content:"\f192";
 }
+    */
 .toggle-switch {
   position: relative;
   width: 60px;

@@ -1,4 +1,4 @@
-﻿<div class="input_fields_wrap">
+﻿<div class="input_fields_wrap container">
     <div class="row">
         <div class="col-md-6">
             <div class="checkbox">
@@ -31,7 +31,10 @@
         </div>
         <div class="col-md-6">
             <div class="checkbox">
-                <label><input type="checkbox" name="dienstType" value="Oder">Oder</label>
+                <label><input type="checkbox" name="dienstType" value="Oder" [(ngModel)]="showDienstOder">Oder</label>
+            </div>
+            <div *ngIf="showDienstOder">
+                <input type="text" class="form-control" [(ngModel)]="dienstOther" />
             </div>
         </div>
     </div>

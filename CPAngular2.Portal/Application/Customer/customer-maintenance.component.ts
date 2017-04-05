@@ -42,6 +42,8 @@ export class CustomerMaintenanceComponent implements OnInit {
     public fax: string;
     public eMail: string;
     public photo: string;
+    public dienstOther: string;
+    public showDienstOder: Boolean;
 
     public showUpdateButton: Boolean;
     public showAddButton: Boolean;

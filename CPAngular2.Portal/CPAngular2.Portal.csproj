@@ -191,13 +191,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Application\Content\bootstrap.css" />
     <Content Include="Application\Customer\cludge.html" />
     <Content Include="Application\Customer\customer-maintenance.component.html" />
     <Content Include="Application\Customer\dienst-selector.html" />
     <Content Include="Application\Customer\languages.html" />
     <Content Include="Application\Customer\out-of-germany.html" />
-    <Content Include="Application\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Application\Content\images\loading-spinner-grey.gif" />
     <Content Include="Application\Content\spinner.css" />
     <Content Include="Application\Customer\customer-inquiry.component.html" />
@@ -252,11 +250,6 @@
     <Content Include="index.cshtml" />
     <Content Include="package.json" />
     <Content Include="typings.json" />
-    <Content Include="Application\Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Application\Fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Application\Fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Application\Fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Application\Content\bootstrap.css.map" />
     <Content Include="packages.config" />
     <Content Include="tsconfig.json" />
     <None Include="Web.Debug.config">

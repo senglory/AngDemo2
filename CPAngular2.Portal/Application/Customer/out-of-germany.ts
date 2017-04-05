@@ -22,7 +22,7 @@ export class OutOfGermany implements OnInit {
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
                 var v = jQuery(".container", wrapper);
-                v.append('<div class="row"><div class="control-group"><div  class="controls form-group col-md-4"><input type="text" class="input form-control" placeholder="Country" name="countryOOG[]"/></div><div  class="controls form-group col-md-4"><input type="text" class="input form-control" placeholder="City or Zip" name="cityOrZipOOG[]"/></div><div  class="controls form-group col-md-3"><input type="text" class="input form-control" placeholder="Vicinity" name="vicinityOOG[]"/></div><div  class="controls form-group col-md-1"><a href="#" class="remove_field">Remove</a></div></div></div>');
+                v.append('<div class="row"><div class="control-group"><div  class="controls form-group col-md-4"><input type="text" class="input form-control" placeholder="Country" name="countryOOG[]"/></div><div  class="controls form-group col-md-4"><input type="text" class="input form-control" placeholder="City or Zip" name="cityOrZipOOG[]"/></div><div  class="controls form-group col-md-3"><input type="text" class="input form-control" placeholder="Vicinity" name="vicinityOOG[]"/></div><div  class="controls form-group col-md-1"><a href="#" class="remove_field"><i class="fa fa-remove"></i></a></div></div></div>');
             }
         });
 
