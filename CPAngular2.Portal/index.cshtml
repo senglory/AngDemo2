@@ -1,7 +1,4 @@
-﻿
-@{
-
-
+﻿@{
     string title = System.Configuration.ConfigurationManager.AppSettings["Title"].ToString();
     Boolean includeBrowserSync = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["IncludeBrowserSync"]);
     string version = typeof(CodeProjectAngular2.Portal.RouteConfig).Assembly.GetName().Version.ToString();
@@ -16,7 +13,6 @@
             currentRoute = HttpContext.Current.Request.QueryString[key];
         }
     }
-
 }
 <!DOCTYPE html>
 <html>
@@ -46,14 +42,8 @@
     <script src="~/node_modules/systemjs/dist/system.src.js"></script>
     <script src="~/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!--
-    
-    @*<link href="~/Application/Content/bootstrap.css" rel="stylesheet" />*@
-    
     @if (HttpContext.Current.IsDebuggingEnabled)
     {
-        <!--<script src="~/node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>-->
-
         <!-- 2. Configure SystemJS -->
         <script src="~/systemjs.config.js"></script>
         <script>
@@ -68,9 +58,10 @@
         });
     </script>
 
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="Application/Content/Style.css" rel="stylesheet" />
     <link href="Application/Content/spinner.css" rel="stylesheet" />
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 
 <!-- 3. Display the application -->

@@ -11,6 +11,7 @@ import { AddressComponent } from '../shared/address.component';
 import { InGermany }  from './cludge';
 import { OutOfGermany }  from './out-of-germany';
 import { DienstSelector }  from './dienst-selector';
+import { LanguagesSelector }  from './languages';
 import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
 
 //import { ImageUploadModule } from 'ng2-imageupload';

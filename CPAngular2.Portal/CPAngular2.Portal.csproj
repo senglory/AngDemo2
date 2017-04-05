@@ -195,6 +195,7 @@
     <Content Include="Application\Customer\cludge.html" />
     <Content Include="Application\Customer\customer-maintenance.component.html" />
     <Content Include="Application\Customer\dienst-selector.html" />
+    <Content Include="Application\Customer\languages.html" />
     <Content Include="Application\Customer\out-of-germany.html" />
     <Content Include="Application\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Application\Content\images\loading-spinner-grey.gif" />
@@ -278,6 +279,7 @@
     <TypeScriptCompile Include="Application\Customer\customer-inquiry.component.ts" />
     <TypeScriptCompile Include="Application\Customer\customer-maintenance.component.ts" />
     <TypeScriptCompile Include="Application\Customer\dienst-selector.ts" />
+    <TypeScriptCompile Include="Application\Customer\languages.ts" />
     <TypeScriptCompile Include="Application\Customer\out-of-germany.ts" />
     <TypeScriptCompile Include="Application\Entities\address.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\customer.entity.ts" />

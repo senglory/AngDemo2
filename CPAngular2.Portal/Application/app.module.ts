@@ -25,6 +25,8 @@ import { AddressComponent } from './shared/address.component';
 import { InGermany } from './customer/cludge';
 import { OutOfGermany } from './customer/out-of-germany';
 import { DienstSelector } from './customer/dienst-selector';
+import { LanguagesSelector }  from './customer/languages';
+
 import { AuthorizationGuard } from './authorization-guard';
 import { DataGrid } from './shared/datagrid/datagrid.component';
 import { AppRoutes } from './application-routes';
@@ -44,6 +46,7 @@ import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
         DataGrid,
         InGermany,
         DienstSelector,
+        LanguagesSelector,
         OutOfGermany,
         AddressComponent,
         AlertBoxComponent,
