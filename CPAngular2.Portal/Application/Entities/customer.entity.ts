@@ -1,5 +1,6 @@
 ﻿import { TransactionalInformation } from './transactionalinformation.entity';
 import { Geography } from './geography.entity';
+import {Availability} from './availability.entity';
 
 export class Customer extends TransactionalInformation {
     public customerID: number;
@@ -15,12 +16,13 @@ export class Customer extends TransactionalInformation {
     public zipCode: string;
     public phoneNumber: string;
     public phoneNumber2: string;
-    public fax: string;
+    public faxNumber: string;
     public eMail: string;
     public photo: string;
     public dateCreated: Date;
     public dateUpdated: Date;
-    public schedule: Array<Date>;
+    public availableAllDE: boolean;
     public availableGeo: Array<Geography>;
+    public availableTime: Array<Availability>;
     public customers: Array<Customer>;
 }

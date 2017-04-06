@@ -34,14 +34,6 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="Abteilung" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
                                             <label class="col-sm-2 control-label required">Vorname</label>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control" [(ngModel)]="companyVorname" [ngClass]="{'validation-error': companyVornameInputError}" />
@@ -50,9 +42,36 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label required">Nachname </label>
+                                            <label class="col-sm-2 control-label required">Nachname</label>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control" [(ngModel)]="companyName" [ngClass]="{'validation-error': companyNameInputError}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Photo</label>
+                                            <div class="col-sm-8">
+
+                                                <input type="file" name="photo" required (change)="fileChange(input)" #input />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <img [attr.src]='file_srcs[0]' alt="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-6" >
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="Abteilung" />
                                             </div>
                                         </div>
                                     </div>
@@ -64,6 +83,13 @@
                                             <label class="col-sm-2 control-label">Telefon</label>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control" [(ngModel)]="phoneNumber">
+                                            </div>
+                                        </div>
+                                    </div><div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Fax</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" [(ngModel)]="faxNumber">
                                             </div>
                                         </div>
                                     </div>
@@ -83,25 +109,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Photo</label>
-                                            <div class="col-sm-8">
 
-                                                <input type="file" name="photo" required (change)="fileChange(input)" #input />
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6" >
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <img [attr.src]='file_srcs[0]' alt="" />
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

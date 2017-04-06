@@ -58,7 +58,6 @@ export class CustomerInquiryComponent implements OnInit {
         this.columns.push(new DataGridColumn('companyName', 'Nachname', '[{"width": "30%" , "hyperLink": true, "disableSorting": false}]'));
         this.columns.push(new DataGridColumn('city', 'City', '[{"width": "20%" , "disableSorting": false}]'));
         this.columns.push(new DataGridColumn('zipCode', 'Zip Code', '[{"width": "10%" , "disableSorting": false}]'));
-        //this.columns.push(new DataGridColumn('dateUpdated', 'Date Updated', '[{"width": "15%" , "disableSorting": false, "formatDate": true}]'));
 
         this.executeSearch();
 
@@ -99,17 +98,17 @@ export class CustomerInquiryComponent implements OnInit {
 
     private getCustomersOnSuccess(response: Customer): void {
 
-        let transactionalInformation = new TransactionalInformation();
-        transactionalInformation.currentPageNumber = this.currentPageNumber;
-        transactionalInformation.pageSize = this.pageSize;
-        transactionalInformation.totalPages = response.totalPages;
-        transactionalInformation.totalRows = response.totalRows;
-        transactionalInformation.sortDirection = this.sortDirection;
-        transactionalInformation.sortExpression = this.sortExpression;
+        let ti = new TransactionalInformation();
+        ti.currentPageNumber = this.currentPageNumber;
+        ti.pageSize = this.pageSize;
+        ti.totalPages = response.totalPages;
+        ti.totalRows = response.totalRows;
+        ti.sortDirection = this.sortDirection;
+        ti.sortExpression = this.sortExpression;
 
         this.customers = response.customers;
 
-        this.datagrid.databind(transactionalInformation);
+        this.datagrid.databind(ti);
 
         this.alertService.renderSuccessMessage(response.returnMessage);
         this.messageBox = this.alertService.returnFormattedMessage();

@@ -18,3 +18,7 @@ import {NgUploaderComponent} from './ngx-uploader.component';
 'ngx-uploader': 'node_modules/ngx-uploader/bundle/ngx-uploader.umd.js'
 
 
+
+
+https://www.codeproject.com/Questions/693159/Getting-all-Zip-Codes-in-a-given-Radius-km-from-gi
+

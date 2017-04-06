@@ -31,6 +31,8 @@ export class CustomerMaintenanceComponent implements OnInit {
 
     public title: string = 'Provider Maintenance';
     public customerID: number;
+    public theCustomer: Customer;
+
     public salutation: string; 
     public Abteilung: string;
     public customerCode: string;
@@ -42,9 +44,9 @@ export class CustomerMaintenanceComponent implements OnInit {
     public fax: string;
     public eMail: string;
     public photo: string;
-    public dienstOther: string;
-    public showDienstOder: Boolean;
+    public dienstOder: string;
 
+    public showDienstOder: Boolean;
     public showUpdateButton: Boolean;
     public showAddButton: Boolean;
 
@@ -64,7 +66,6 @@ export class CustomerMaintenanceComponent implements OnInit {
     previewData: any;
     errorMessage: string;
 
-    path = '';
     public file_srcs: string[] = [];
     public debug_size_before: string[] = [];
     public debug_size_after: string[] = [];  
@@ -187,26 +188,26 @@ export class CustomerMaintenanceComponent implements OnInit {
         });
     }
 
-    private getCustomerOnSuccess(response: Customer) {
-        this.customerCode = response.customerCode;
-        this.companyVorname = response.companyVorname;
-        this.companyName = response.companyName;
-        this.phoneNumber = response.phoneNumber;
-        this.eMail = response.eMail;
-        this.address.addressLine1 = response.addressLine1;
-        this.address.addressLine2 = response.addressLine2;
-        this.address.city = response.city;
-        this.address.state = response.state;
-        this.address.zipCode = response.zipCode;
+    private getCustomerOnSuccess(cust: Customer) {
+        this.customerCode = cust.customerCode;
+        this.companyVorname = cust.companyVorname;
+        this.companyName = cust.companyName;
+        this.phoneNumber = cust.phoneNumber;
+        this.eMail = cust.eMail;
+        this.address.addressLine1 = cust.addressLine1;
+        this.address.addressLine2 = cust.addressLine2;
+        this.address.city = cust.city;
+        this.address.state = cust.state;
+        this.address.zipCode = cust.zipCode;
         this.showUpdateButton = true;
         this.showAddButton = false;
     }
 
-    private getCustomerOnError(response: Customer) {
-        this.alertService.renderErrorMessage(response.returnMessage);
+    private getCustomerOnError(cust: Customer) {
+        this.alertService.renderErrorMessage(cust.returnMessage);
         this.messageBox = this.alertService.returnFormattedMessage();
         this.alerts = this.alertService.returnAlerts();
-        this.alertService.setValidationErrors(this, response.validationErrors);    
+        this.alertService.setValidationErrors(this, cust.validationErrors);
     }
 
     public updateCustomer(): void {
@@ -237,24 +238,24 @@ export class CustomerMaintenanceComponent implements OnInit {
             response => this.updateCustomerOnError(response));
     }
 
-    private updateCustomerOnSuccess(response: Customer) {
+    private updateCustomerOnSuccess(cust: Customer) {
 
         if (this.customerID == 0) {
-            this.customerID = response.customerID;
+            this.customerID = cust.customerID;
             this.showAddButton = false;
             this.showUpdateButton = true;
         }
        
-        this.alertService.renderSuccessMessage(response.returnMessage);
+        this.alertService.renderSuccessMessage(cust.returnMessage);
         this.messageBox = this.alertService.returnFormattedMessage();
         this.alerts = this.alertService.returnAlerts();
     }
 
-    private updateCustomerOnError(response: Customer) {
-        this.alertService.renderErrorMessage(response.returnMessage);
+    private updateCustomerOnError(cust: Customer) {
+        this.alertService.renderErrorMessage(cust.returnMessage);
         this.messageBox = this.alertService.returnFormattedMessage();
         this.alerts = this.alertService.returnAlerts();
-        this.alertService.setValidationErrors(this, response.validationErrors);    
+        this.alertService.setValidationErrors(this, cust.validationErrors);    
     }
 
 
