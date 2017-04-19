@@ -95,12 +95,12 @@
         /// <param name="action">The action.</param>
         private void DispatchRequest(IControllerFactory controllerFactory, string controller, string action)
         {
+            var srvUrl = _requestContext.HttpContext.Request.Url.Scheme + "://" + _requestContext.HttpContext.Request.Url.Authority + "/";
 
             string currentRoute = _requestContext.HttpContext.Request.CurrentExecutionFilePath;
-            string defaultPage = System.Configuration.ConfigurationManager.AppSettings["DefaultPage"].ToString();
+            string defaultPage = srvUrl +  System.Configuration.ConfigurationManager.AppSettings["DefaultPage"].ToString();
 
             _requestContext.HttpContext.Response.Redirect(defaultPage + "?referral" + currentRoute + "&" + "CurrentRoute=" + currentRoute);
-      
         }
 
         /// <summary>

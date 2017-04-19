@@ -22,3 +22,7 @@ import {NgUploaderComponent} from './ngx-uploader.component';
 
 https://www.codeproject.com/Questions/693159/Getting-all-Zip-Codes-in-a-given-Radius-km-from-gi
 
+
+http://www.geonames.org/export/web-services.html#postalCodeLookupJSON
+http://www.geonames.org/export/ws-overview.html
+http://www.geonames.org/export/
