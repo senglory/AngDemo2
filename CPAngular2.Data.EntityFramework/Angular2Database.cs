@@ -14,6 +14,11 @@ namespace CodeProjectAngular2.Data.EntityFramework
     public class Angular2Database : DbContext
     {
 
+        public Angular2Database(): base("Angular2Database")
+        {
+
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
         //public DbSet<Geography> Geographys { get; set; }
