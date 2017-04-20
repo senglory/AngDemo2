@@ -7,12 +7,12 @@ import { CustomerService } from '../services/customer.service';
 import { HttpService } from '../services/http.service';
 import { AlertService } from '../services/alert.service';
 import { SessionService } from '../services/session.service';
-import { AddressComponent } from '../shared/address.component';
-import { InGermany }  from './cludge';
-import { OutOfGermany }  from './out-of-germany';
-import { DienstSelector }  from './dienst-selector';
-import { LanguagesSelector }  from './languages';
-import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
+//import { AddressComponent } from '../shared/address.component';
+//import { InGermany }  from './cludge';
+//import { OutOfGermany }  from './out-of-germany';
+//import { DienstSelector }  from './dienst-selector';
+//import { LanguagesSelector }  from './languages';
+//import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
 
 //import { ImageUploadModule } from 'ng2-imageupload';
 //import { NgUploaderModule } from 'ngx-uploader';
@@ -60,15 +60,14 @@ export class CustomerMaintenanceComponent implements OnInit {
 
 
 
-    options: NgUploaderOptions;
+    //options: NgUploaderOptions;
     response: any;
     sizeLimit: number = 1000000; // 1MB
-    previewData: any;
     errorMessage: string;
 
     public file_srcs: string[] = [];
     public debug_size_before: string[] = [];
-    public debug_size_after: string[] = [];  
+    public debug_size_after: string[] = [];
 
     constructor(
         private zone: NgZone,
@@ -79,17 +78,17 @@ export class CustomerMaintenanceComponent implements OnInit {
         private sessionService: SessionService,
         private alertService: AlertService) {
 
-    }
+        }
 
 
-    fileChange(inp) {
-        this.readFiles(inp.files);
+        fileChange(inp) {
+            this.readFiles(inp.files);
     }
 
     readFile(file, reader, callback) {
         reader.onload = () => {
             callback(reader.result);
-            this.photo = reader.result;
+//            this.photo = reader.result;
             console.log(reader.result);
         }
         reader.readAsDataURL(file);
@@ -103,11 +102,12 @@ export class CustomerMaintenanceComponent implements OnInit {
             this.readFile(files[index], reader, (result) => {
 
                 // Create an img element and add the image file data to it  
-                var img = document.createElement("img");
-                img.setAttribute('id' , "dummy");
-                img.src = result;
+                // JUST FOR this.resize()
+                var dummyImg = document.createElement("img");
+                dummyImg.setAttribute('id' , "dummy");
+                dummyImg.src = result;
                 // Send this img to the resize function (and wait for callback)  
-                this.resize(img, 250, 250, (resized_pict, before, after) => {
+                this.resize(dummyImg, 250, 250, (resized_pict, before, after) => {
                     // For debugging (size in bytes before and after)  
                     this.debug_size_before.push(before);
                     this.debug_size_after.push(after);
@@ -116,6 +116,7 @@ export class CustomerMaintenanceComponent implements OnInit {
                     // base64 string or img.src = resized_jpeg if you prefer a file).  
                     this.file_srcs.pop();
                     this.file_srcs.push(resized_pict);
+                    this.photo = resized_pict;
                     // Read the next file;  
                     //this.readFiles(files, index + 1);
                 });
@@ -172,10 +173,10 @@ export class CustomerMaintenanceComponent implements OnInit {
 
                 this.customerID = parseInt(id);
 
-                let customer = new Customer();
-                customer.customerID = this.customerID;
+                let cust = new Customer();
+                cust.customerID = this.customerID;
 
-                this.customerService.getCustomer(customer)
+                this.customerService.getCustomer(cust)
                     .subscribe(
                     response => this.getCustomerOnSuccess(response),
                     response => this.getCustomerOnError(response));
@@ -189,16 +190,21 @@ export class CustomerMaintenanceComponent implements OnInit {
     }
 
     private getCustomerOnSuccess(cust: Customer) {
+        this.Abteilung = cust.Abteilung;
+        this.salutation = cust.salutation;
         this.customerCode = cust.customerCode;
         this.companyVorname = cust.companyVorname;
         this.companyName = cust.companyName;
         this.phoneNumber = cust.phoneNumber;
+        this.phoneNumber2 = cust.phoneNumber2;
         this.eMail = cust.eMail;
         this.address.addressLine1 = cust.addressLine1;
         this.address.addressLine2 = cust.addressLine2;
         this.address.city = cust.city;
         this.address.state = cust.state;
         this.address.zipCode = cust.zipCode;
+        this.photo = cust.photo;
+
         this.showUpdateButton = true;
         this.showAddButton = false;
     }
@@ -212,27 +218,27 @@ export class CustomerMaintenanceComponent implements OnInit {
 
     public updateCustomer(): void {
 
-        let customer = new Customer();
+        let cust = new Customer();
 
-        customer.customerID = this.customerID;
-        customer.Abteilung = this.Abteilung;
-        customer.salutation = this.salutation;
-        customer.customerCode = this.customerCode;
-        customer.companyVorname = this.companyVorname;
-        customer.companyName = this.companyName;
-        customer.phoneNumber = this.phoneNumber;
-        customer.phoneNumber2 = this.phoneNumber2;
-        customer.eMail = this.eMail;
-        customer.addressLine1 = this.address.addressLine1;
-        customer.addressLine2 = this.address.addressLine2;
-        customer.city = this.address.city;
-        customer.state = this.address.state;
-        customer.zipCode = this.address.zipCode;
-        customer.photo = this.photo;
+        cust.customerID = this.customerID;
+        cust.Abteilung = this.Abteilung;
+        cust.salutation = this.salutation;
+        cust.customerCode = this.customerCode;
+        cust.companyVorname = this.companyVorname;
+        cust.companyName = this.companyName;
+        cust.phoneNumber = this.phoneNumber;
+        cust.phoneNumber2 = this.phoneNumber2;
+        cust.eMail = this.eMail;
+        cust.addressLine1 = this.address.addressLine1;
+        cust.addressLine2 = this.address.addressLine2;
+        cust.city = this.address.city;
+        cust.state = this.address.state;
+        cust.zipCode = this.address.zipCode;
+        cust.photo = this.photo;
 
         this.clearInputErrors();
    
-        this.customerService.updateCustomer(customer)
+        this.customerService.updateCustomer(cust)
             .subscribe(
             response => this.updateCustomerOnSuccess(response),
             response => this.updateCustomerOnError(response));

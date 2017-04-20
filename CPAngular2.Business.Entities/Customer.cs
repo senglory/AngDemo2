@@ -27,9 +27,7 @@ namespace CodeProjectAngular2.Business.Entities
         public string EMail { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
-
-        [Column(TypeName = "image")]
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
 
     }
 }

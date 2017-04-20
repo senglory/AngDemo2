@@ -5,10 +5,10 @@ import {Availability} from './availability.entity';
 export class Customer extends TransactionalInformation {
     public customerID: number;
     public salutation: string; 
-    public Abteilung: string;
     public companyVorname: string;
-    public companyName: string;
     public customerCode: string;
+    public Abteilung: string;
+    public companyName: string;
     public addressLine1: string;
     public addressLine2: string;
     public city: string;
@@ -18,9 +18,9 @@ export class Customer extends TransactionalInformation {
     public phoneNumber2: string;
     public faxNumber: string;
     public eMail: string;
-    public photo: string;
     public dateCreated: Date;
     public dateUpdated: Date;
+    public photo: string;
     public availableAllDE: boolean;
     public availableGeo: Array<Geography>;
     public availableTime: Array<Availability>;

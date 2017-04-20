@@ -72,7 +72,7 @@
         </div>
     </codeproject-application>
 
-    @if (HttpContext.Current.IsDebuggingEnabled == true && includeBrowserSync == true)
+    @if (HttpContext.Current.IsDebuggingEnabled   && includeBrowserSync)
     {
             <!-- BrowserSync:SNIPPET-->
         <script type='text/javascript' id="__bs_script__">

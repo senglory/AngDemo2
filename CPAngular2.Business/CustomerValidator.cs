@@ -10,11 +10,11 @@ using CodeProjectAngular2.Interfaces;
 
 namespace CodeProjectAngular2.Business
 {
-    public class CustomerBusinessRules : AbstractValidator<Customer>
+    public class CustomerValidator : AbstractValidator<Customer>
     {      
         private Boolean _validCustomerCode = true;
        
-        public CustomerBusinessRules(ICustomerDataService customerDataService, Customer customer)
+        public CustomerValidator(ICustomerDataService customerDataService, Customer customer)
         {
            
             if (customer.CustomerCode != null && customer.CustomerCode.Trim().Length > 0)
@@ -33,7 +33,17 @@ namespace CodeProjectAngular2.Business
             }
 
             RuleFor(a => a.CustomerCode).NotEmpty().WithMessage("Customer Code is required.");
-            RuleFor(a => a.CompanyName).NotEmpty().WithMessage("Company Name is required.");                    
+            RuleFor(a => a.CompanyName).NotEmpty().WithMessage("Company Name is required.");
+            RuleFor(a => a.CompanyVorname).NotEmpty().WithMessage("CompanyVorname is required.");
+            RuleFor(a => a.Salutation).NotEmpty().WithMessage("Salutation is required.");
+            RuleFor(a => a.Photo).NotEmpty().WithMessage("Photo is required.");
+            RuleFor(a => a.AddressLine1).NotEmpty().WithMessage("AddressLine1 is required.");
+            RuleFor(a => a.City).NotEmpty().WithMessage("City is required.");
+            RuleFor(a => a.ZipCode).NotEmpty().WithMessage("ZipCode is required.");
+            RuleFor(a => a.State).NotEmpty().WithMessage("State is required.");
+            RuleFor(a => a.PhoneNumber2).NotEmpty().WithMessage("PhoneNumber2 is required.");
+            RuleFor(a => a.EMail).NotEmpty().WithMessage("EMail is required.");
+
             RuleFor(a => a.CustomerCode).Must(ValidateDuplicateCustomerCode).WithMessage("Customer Code already exists.");
 
         }

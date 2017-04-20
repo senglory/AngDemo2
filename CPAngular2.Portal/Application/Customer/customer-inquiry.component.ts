@@ -77,15 +77,15 @@ export class CustomerInquiryComponent implements OnInit {
 
         setTimeout(() => {
 
-                let customer = new Customer();
-                customer.customerCode = this.customerCode;
-                customer.companyName = this.companyName;
-                customer.pageSize = this.pageSize;
-                customer.sortDirection = this.sortDirection;
-                customer.sortExpression = this.sortExpression;
-                customer.currentPageNumber = this.currentPageNumber;
+                let cust = new Customer();
+                cust.customerCode = this.customerCode;
+                cust.companyName = this.companyName;
+                cust.pageSize = this.pageSize;
+                cust.sortDirection = this.sortDirection;
+                cust.sortExpression = this.sortExpression;
+                cust.currentPageNumber = this.currentPageNumber;
 
-                this.customerService.getCustomers(customer)
+                this.customerService.getCustomers(cust)
                     .subscribe(
                         response => this.getCustomersOnSuccess(response),
                         response => this.getCustomersOnError(response));
@@ -96,21 +96,21 @@ export class CustomerInquiryComponent implements OnInit {
     }
 
 
-    private getCustomersOnSuccess(response: Customer): void {
+    private getCustomersOnSuccess(cust: Customer): void {
 
         let ti = new TransactionalInformation();
         ti.currentPageNumber = this.currentPageNumber;
         ti.pageSize = this.pageSize;
-        ti.totalPages = response.totalPages;
-        ti.totalRows = response.totalRows;
+        ti.totalPages = cust.totalPages;
+        ti.totalRows = cust.totalRows;
         ti.sortDirection = this.sortDirection;
         ti.sortExpression = this.sortExpression;
 
-        this.customers = response.customers;
+        this.customers = cust.customers;
 
         this.datagrid.databind(ti);
 
-        this.alertService.renderSuccessMessage(response.returnMessage);
+        this.alertService.renderSuccessMessage(cust.returnMessage);
         this.messageBox = this.alertService.returnFormattedMessage();
         this.alerts = this.alertService.returnAlerts();
 

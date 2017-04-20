@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
 using System.Configuration;
 using System.IO;
+
 using CodeProjectAngular2.Business.Entities;
 using CodeProjectAngular2.Interfaces;
 using CodeProjectAngular2.Business.Common;
 using FluentValidation.Results;
+
+using NLog;
 
 namespace CodeProjectAngular2.Business
 {
     public class CustomerBusinessService
     {
         private ICustomerDataService _customerDataService;
+
+        static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Constructor
@@ -70,6 +70,7 @@ namespace CodeProjectAngular2.Business
             }
             catch (Exception ex)
             {
+                _logger.Error(ex);
                 transaction.ReturnMessage = new List<string>();
                 string errorMessage = ex.Message;
                 transaction.ReturnStatus = false;
@@ -97,7 +98,7 @@ namespace CodeProjectAngular2.Business
             customer.AddressLine2 = string.Empty;
             customer.City = ReplaceNullValue(columns[5].Trim());
             customer.State = ReplaceNullValue(columns[6].Trim());
-            customer.ZipCode = ReplaceNullValue(columns[7].Trim());          
+            customer.ZipCode = ReplaceNullValue(columns[7].Trim());
             customer.PhoneNumber = ReplaceNullValue(columns[9].Trim());
 
             Boolean valid = _customerDataService.ValidateDuplicateCustomer(customer.CustomerCode);
@@ -114,9 +115,9 @@ namespace CodeProjectAngular2.Business
         /// <summary>
         /// Update Customer
         /// </summary>
-        /// <param name="customerInformation"></param>
+        /// <param name="ci"></param>
         /// <param name="transaction"></param>
-        public void UpdateCustomer(CustomerInformation customerInformation, out TransactionalInformation transaction)
+        public void UpdateCustomer(CustomerInformation ci, out TransactionalInformation transaction)
         {
             transaction = new TransactionalInformation();
 
@@ -124,13 +125,20 @@ namespace CodeProjectAngular2.Business
 
             try
             {
-                customer.CustomerID = customerInformation.CustomerID;
-                customer.CustomerCode = customerInformation.CustomerCode;
-                customer.CompanyName = customerInformation.CompanyName;
-                customer.CompanyVorname = customerInformation.CompanyVorname;
-                customer.Abteilung = customerInformation.Abteilung;
+                customer.CustomerID = ci.CustomerID;
+                customer.CustomerCode = ci.CustomerCode;
+                customer.CompanyName = ci.CompanyName;
+                customer.CompanyVorname = ci.CompanyVorname;
+                customer.Salutation = ci.Salutation;
+                customer.Photo = ci.Photo;
+                customer.AddressLine1 = ci.AddressLine1;
+                customer.City = ci.City;
+                customer.ZipCode = ci.ZipCode;
+                customer.State = ci.State;
+                customer.PhoneNumber2 = ci.PhoneNumber2;
+                customer.EMail = ci.EMail;
 
-                CustomerBusinessRules customerBusinessRules = new CustomerBusinessRules(_customerDataService, customer);
+                CustomerValidator customerBusinessRules = new CustomerValidator(_customerDataService, customer);
                 ValidationResult results = customerBusinessRules.Validate(customer);
 
                 bool validationSucceeded = results.IsValid;
@@ -145,39 +153,48 @@ namespace CodeProjectAngular2.Business
                 _customerDataService.CreateSession();
                 _customerDataService.BeginTransaction();
 
-                if (customerInformation.CustomerID == 0 )
+                if (ci.CustomerID == 0 )
                 {
-                    customer.AddressLine1 = customerInformation.AddressLine1;
-                    customer.AddressLine2 = customerInformation.AddressLine2;
-                    customer.City = customerInformation.City;
-                    customer.State = customerInformation.State;
-                    customer.ZipCode = customerInformation.ZipCode;
-                    customer.PhoneNumber = customerInformation.PhoneNumber;
-                    customer.PhoneNumber2 = customerInformation.PhoneNumber2;
-                    customer.EMail = customerInformation.EMail;
-                    customer.Photo = customerInformation.Photo;
+                    customer.Salutation = ci.Salutation;
+                    customer.Abteilung = ci.Abteilung;
+                    customer.CompanyVorname = ci.CompanyVorname;
+                    customer.CompanyName = ci.CompanyName;
+                    customer.AddressLine1 = ci.AddressLine1;
+                    customer.AddressLine2 = ci.AddressLine2;
+                    customer.City = ci.City;
+                    customer.State = ci.State;
+                    customer.ZipCode = ci.ZipCode;
+                    customer.Fax = ci.Fax;
+                    customer.PhoneNumber = ci.PhoneNumber;
+                    customer.PhoneNumber2 = ci.PhoneNumber2;
+                    customer.EMail = ci.EMail;
+                    customer.Photo = ci.Photo;
                     _customerDataService.CreateCustomer(customer);
                     _customerDataService.CommitTransaction(true);
 
-                    customerInformation.CustomerID = customer.CustomerID;
+                    ci.CustomerID = customer.CustomerID;
 
                     transaction.ReturnStatus = true;
                     transaction.ReturnMessage.Add("Provider was successfully created at " + DateTime.Now.ToString());
                 }
                 else
                 {
-                    Customer existingCustomer = _customerDataService.GetCustomer(customerInformation.CustomerID);
-                    existingCustomer.CustomerCode = customerInformation.CustomerCode;
-                    existingCustomer.CompanyName = customerInformation.CompanyName;
-                    existingCustomer.AddressLine1 = customerInformation.AddressLine1;
-                    existingCustomer.AddressLine2 = customerInformation.AddressLine2;
-                    existingCustomer.City = customerInformation.City;
-                    existingCustomer.State = customerInformation.State;
-                    existingCustomer.ZipCode = customerInformation.ZipCode;
-                    existingCustomer.PhoneNumber = customerInformation.PhoneNumber;
-                    customer.PhoneNumber2 = customerInformation.PhoneNumber2;
-                    customer.EMail = customerInformation.EMail;
-                    existingCustomer.Photo = customerInformation.Photo;
+                    Customer existingCustomer = _customerDataService.GetCustomer(ci.CustomerID);
+                    existingCustomer.Salutation = ci.Salutation;
+                    existingCustomer.Abteilung = ci.Abteilung;
+                    existingCustomer.CustomerCode = ci.CustomerCode;
+                    existingCustomer.CompanyVorname = ci.CompanyVorname;
+                    existingCustomer.CompanyName = ci.CompanyName;
+                    existingCustomer.AddressLine1 = ci.AddressLine1;
+                    existingCustomer.AddressLine2 = ci.AddressLine2;
+                    existingCustomer.City = ci.City;
+                    existingCustomer.State = ci.State;
+                    existingCustomer.ZipCode = ci.ZipCode;
+                    existingCustomer.Fax = ci.Fax;
+                    existingCustomer.PhoneNumber = ci.PhoneNumber;
+                    existingCustomer.PhoneNumber2 = ci.PhoneNumber2;
+                    existingCustomer.EMail = ci.EMail;
+                    existingCustomer.Photo = ci.Photo;
 
                     _customerDataService.UpdateCustomer(existingCustomer);
                     _customerDataService.CommitTransaction(true);
@@ -188,6 +205,7 @@ namespace CodeProjectAngular2.Business
             }
             catch (Exception ex)
             {
+                _logger.Error(ex);
                 string errorMessage = ex.Message;
                 transaction.ReturnMessage.Add(errorMessage);
                 transaction.ReturnStatus = false;
@@ -231,6 +249,7 @@ namespace CodeProjectAngular2.Business
             }
             catch (Exception ex)
             {
+                _logger.Error(ex);
                 transaction.ReturnMessage = new List<string>();
                 string errorMessage = ex.Message;
                 transaction.ReturnStatus = false;
@@ -257,7 +276,7 @@ namespace CodeProjectAngular2.Business
 
             CustomerInformation customerInformation = new CustomerInformation();
 
-  
+
             try
             {
                 _customerDataService.CreateSession();
@@ -266,6 +285,7 @@ namespace CodeProjectAngular2.Business
             }
             catch (Exception ex)
             {
+                _logger.Error(ex);
                 transaction.ReturnMessage = new List<string>();
                 string errorMessage = ex.Message;
                 transaction.ReturnStatus = false;
@@ -287,21 +307,27 @@ namespace CodeProjectAngular2.Business
         /// <returns></returns>
         private CustomerInformation PopulateCustomerInformation(Customer customer)
         {
-            CustomerInformation customerInformation = new CustomerInformation();
-            customerInformation.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
-            customerInformation.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
-            customerInformation.City = ReplaceNullValue(customer.City);
-            customerInformation.CompanyName = ReplaceNullValue(customer.CompanyName);
-            customerInformation.CustomerCode = ReplaceNullValue(customer.CustomerCode);
-            customerInformation.CustomerID = customer.CustomerID;
-            customerInformation.DateCreated = customer.DateCreated;
-            customerInformation.DateUpdated = customer.DateUpdated;
-            customerInformation.PhoneNumber = ReplaceNullValue(customer.PhoneNumber);
-            customerInformation.State = ReplaceNullValue(customer.State);
-            customerInformation.ZipCode = ReplaceNullValue(customer.ZipCode);
+            CustomerInformation ci = new CustomerInformation();
+            ci.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
+            ci.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
+            ci.Salutation = ReplaceNullValue(customer.Salutation);
+            ci.Abteilung = ReplaceNullValue(customer.Abteilung);
+            ci.City = ReplaceNullValue(customer.City);
+            ci.CompanyVorname = ReplaceNullValue(customer.CompanyVorname);
+            ci.CompanyName = ReplaceNullValue(customer.CompanyName);
+            ci.CustomerCode = ReplaceNullValue(customer.CustomerCode);
+            ci.CustomerID = customer.CustomerID;
+            ci.DateCreated = customer.DateCreated;
+            ci.DateUpdated = customer.DateUpdated;
+            ci.Fax = ReplaceNullValue(customer.Fax);
+            ci.PhoneNumber = ReplaceNullValue(customer.PhoneNumber);
+            ci.PhoneNumber2 = ReplaceNullValue(customer.PhoneNumber2);
+            ci.EMail = ReplaceNullValue(customer.EMail);
+            ci.State = ReplaceNullValue(customer.State);
+            ci.ZipCode = ReplaceNullValue(customer.ZipCode);
+            ci.Photo = customer.Photo;
 
-            return customerInformation;
-
+            return ci;
         }
 
         /// <summary>
