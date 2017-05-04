@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerDienst.cs" />
+    <Compile Include="Dienstype.cs" />
     <Compile Include="DTO\CustomerInformation.cs" />
     <Compile Include="Geography.cs" />
     <Compile Include="DTO\TransactionalInformation.cs" />

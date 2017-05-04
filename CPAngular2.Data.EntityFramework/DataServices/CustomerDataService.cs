@@ -51,7 +51,7 @@ namespace CodeProjectAngular2.Data.EntityFramework
         /// <returns></returns>
         public Customer GetCustomer(int customerID)
         {
-            Customer customer = dbConnection.Customers.Where(c => c.CustomerID == customerID).FirstOrDefault();
+            Customer customer = dbConnection.Customers.Include("CustDienst").Where(c => c.CustomerID == customerID).FirstOrDefault();
             return customer;
         }
 

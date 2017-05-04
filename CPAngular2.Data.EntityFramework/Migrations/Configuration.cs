@@ -1,4 +1,4 @@
-namespace CodeProjectAngular2.Data.EntityFramework.Migrations
+namespace CPAngular2.Data.EntityFramework.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -9,8 +9,7 @@ namespace CodeProjectAngular2.Data.EntityFramework.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "CodeProjectAngular2.Data.EntityFramework.Angular2Database";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(CodeProjectAngular2.Data.EntityFramework.Angular2Database context)

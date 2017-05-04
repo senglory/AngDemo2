@@ -28,6 +28,7 @@ namespace CodeProjectAngular2.Business.Entities
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
         public string Photo { get; set; }
+        public  IList<CustomerDienst> CustDienst { get; set; }
 
     }
 }

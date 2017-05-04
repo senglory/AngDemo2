@@ -32,6 +32,8 @@ import { DataGrid } from './shared/datagrid/datagrid.component';
 import { AppRoutes } from './application-routes';
 import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
 
+//import * as LINQ from 'linqscript/source/source';
+
 
 @NgModule({
     imports: [

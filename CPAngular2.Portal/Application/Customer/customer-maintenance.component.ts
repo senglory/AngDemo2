@@ -2,6 +2,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Address } from '../entities/address.entity';
 import { Customer } from '../entities/customer.entity';
+import { Dienst } from '../entities/dienst.entity';
 import { AlertBoxComponent } from '../shared/alertbox.component';
 import { CustomerService } from '../services/customer.service';
 import { HttpService } from '../services/http.service';

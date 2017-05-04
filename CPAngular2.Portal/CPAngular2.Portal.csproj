@@ -287,6 +287,7 @@
     <TypeScriptCompile Include="Application\Entities\address.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\availability.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\customer.entity.ts" />
+    <TypeScriptCompile Include="Application\Entities\dienst.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\geography.entity.ts" />
     <TypeScriptCompile Include="Application\Home\import-customers.component.ts" />
     <TypeScriptCompile Include="Application\Services\blockui.service.ts" />

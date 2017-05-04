@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201704200857583_ChangePhotoField.Designer.cs">
       <DependentUpon>201704200857583_ChangePhotoField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704201639267_AddDienst.cs" />
+    <Compile Include="Migrations\201704201639267_AddDienst.Designer.cs">
+      <DependentUpon>201704201639267_AddDienst.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704200857583_ChangePhotoField.resx">
       <DependentUpon>201704200857583_ChangePhotoField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201639267_AddDienst.resx">
+      <DependentUpon>201704201639267_AddDienst.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
