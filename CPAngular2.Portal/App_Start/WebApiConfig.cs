@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using Newtonsoft.Json.Serialization;
 
-namespace CodeProjectAngular2.Portal
+namespace CPAngular2.Portal
 {
     public static class WebApiConfig
     {

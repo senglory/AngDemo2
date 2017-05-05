@@ -1,4 +1,4 @@
-namespace CodeProjectAngular2.Data.EntityFramework.Migrations
+namespace CPAngular2.Data.EntityFramework.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

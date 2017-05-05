@@ -1,13 +1,10 @@
-﻿import { Component, OnInit, NgZone, ChangeDetectorRef, Inject, EventEmitter } from '@angular/core';
+﻿import { Component, OnInit, ChangeDetectorRef, Inject, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Address } from '../entities/address.entity';
 import { Customer } from '../entities/customer.entity';
 import { Dienst } from '../entities/dienst.entity';
-import { AlertBoxComponent } from '../shared/alertbox.component';
 import { CustomerService } from '../services/customer.service';
-import { HttpService } from '../services/http.service';
 import { AlertService } from '../services/alert.service';
-import { SessionService } from '../services/session.service';
 //import { AddressComponent } from '../shared/address.component';
 //import { InGermany }  from './cludge';
 //import { OutOfGermany }  from './out-of-germany';
@@ -60,12 +57,10 @@ export class CustomerMaintenanceComponent implements OnInit {
     public debug_size_after: string[] = [];
 
     constructor(
-        private zone: NgZone,
         private changeDetectorRef: ChangeDetectorRef,
 
         private route: ActivatedRoute,
         private customerService: CustomerService,
-        private sessionService: SessionService,
         private alertService: AlertService) {
 
         }

@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CodeProjectAngular2.Portal.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CodeProjectAngular2.Portal.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CPAngular2.Portal.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CPAngular2.Portal.App_Start.NinjectWebCommon), "Stop")]
 
-namespace CodeProjectAngular2.Portal.App_Start
+namespace CPAngular2.Portal.App_Start
 {
     using System;
     using System.Web;
@@ -62,8 +62,8 @@ namespace CodeProjectAngular2.Portal.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<CodeProjectAngular2.Interfaces.IUserDataService>().To<CodeProjectAngular2.Data.EntityFramework.UserDataService>();
-            kernel.Bind<CodeProjectAngular2.Interfaces.ICustomerDataService>().To<CodeProjectAngular2.Data.EntityFramework.CustomerDataService>();
+            kernel.Bind<CPAngular2.Interfaces.IUserDataService>().To<CPAngular2.Data.EntityFramework.UserDataService>();
+            kernel.Bind<CPAngular2.Interfaces.ICustomerDataService>().To<CPAngular2.Data.EntityFramework.CustomerDataService>();
 
         }
     }

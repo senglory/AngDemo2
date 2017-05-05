@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeProjectAngular2.Business.Entities
+namespace CPAngular2.Business.Entities
 {
     public class CustomerDTO: _BaseDTO
     {
@@ -29,5 +29,7 @@ namespace CodeProjectAngular2.Business.Entities
         public DateTime? DateCreated { get; set; }
         public DateTime? DateUpdated { get; set; }
         public string Photo { get; set; }
+
+        public IList<CustomerDienstDTO> CustDienst { get; set; }
     }
 }

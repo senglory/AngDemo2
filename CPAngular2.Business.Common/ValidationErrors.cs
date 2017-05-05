@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeProjectAngular2.Business.Entities;
+using CPAngular2.Business.Entities;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace CodeProjectAngular2.Business.Common
+namespace CPAngular2.Business.Common
 {
     /// <summary>
     /// Validation Errors

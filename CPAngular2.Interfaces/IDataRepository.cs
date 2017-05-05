@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeProjectAngular2.Interfaces
+namespace CPAngular2.Interfaces
 {
    
     public interface IDataRepository

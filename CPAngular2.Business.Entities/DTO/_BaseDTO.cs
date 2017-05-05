@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace CodeProjectAngular2.Business.Entities
+namespace CPAngular2.Business.Entities
 {
     public class _BaseDTO
     {

@@ -1,9 +1,9 @@
-﻿namespace CodeProjectAngular2.Portal.ControllerLess.Mvc
+﻿namespace CPAngular2.Portal.ControllerLess.Mvc
 {
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;  
-    using CodeProjectAngular2.Portal.ControllerLess.Configuration;
+    using CPAngular2.Portal.ControllerLess.Configuration;
 
     /// <summary>
     /// The ControllerLessHttpHandler class.

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeProjectAngular2.Business.Entities;
-using CodeProjectAngular2.Interfaces;
-using CodeProjectAngular2.Business.Common;
+using CPAngular2.Business.Entities;
+using CPAngular2.Interfaces;
+using CPAngular2.Business.Common;
 using FluentValidation.Results;
 using FluentValidation;
 
-namespace CodeProjectAngular2.Business
+namespace CPAngular2.Business
 {
     public class UserBusinessService
     {

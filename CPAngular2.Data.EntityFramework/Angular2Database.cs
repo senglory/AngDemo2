@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeProjectAngular2.Business.Entities;
+using CPAngular2.Business.Entities;
 using System.Data.Entity;
 
-namespace CodeProjectAngular2.Data.EntityFramework
+namespace CPAngular2.Data.EntityFramework
 {
     /// <summary>
     /// CodeProject Entity Framework Database Context

@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 
-using CodeProjectAngular2.Business.Entities;
-using CodeProjectAngular2.Interfaces;
-using CodeProjectAngular2.Business.Common;
+using CPAngular2.Business.Entities;
+using CPAngular2.Interfaces;
+using CPAngular2.Business.Common;
 
 using FluentValidation.Results;
 using NLog;
+using AutoMapper;
 
 
-namespace CodeProjectAngular2.Business
+
+namespace CPAngular2.Business
 {
     public class CustomerBusinessService
     {
-        private ICustomerDataService _customerDataService;
+        readonly MapperConfiguration config;
+        readonly IMapper mapper;
+        ICustomerDataService _customerDataService;
 
         static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
@@ -25,6 +29,17 @@ namespace CodeProjectAngular2.Business
         public CustomerBusinessService(ICustomerDataService customerDataService)
         {
             _customerDataService = customerDataService;
+
+            config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Customer, CustomerDTO>();
+                cfg.CreateMap<CustomerDTO, Customer>();
+                cfg.CreateMap<CustomerDienstDTO, CustomerDienst>();
+                cfg.CreateMap<CustomerDienst, CustomerDienstDTO>();
+                cfg.IgnoreUnmapped();
+            });
+            config.AssertConfigurationIsValid();
+            mapper = config.CreateMapper();
         }
 
         /// <summary>
@@ -116,30 +131,31 @@ namespace CodeProjectAngular2.Business
         /// <summary>
         /// Update Customer
         /// </summary>
-        /// <param name="ci"></param>
+        /// <param name="dto"></param>
         /// <param name="transaction"></param>
-        public void UpdateCustomer(CustomerDTO ci, out TransactionalInformation transaction)
+        public void UpdateCustomer(CustomerDTO dto, out TransactionalInformation transaction)
         {
             transaction = new TransactionalInformation();
 
-            Customer customer = new Customer();
+            Customer customer ;
 
             try
             {
-                // !!!!!!! AUTOMAPPER
-                customer.CustomerID = ci.CustomerID;
-                customer.Abteilung = ci.Abteilung;
-                customer.CustomerCode = ci.CustomerCode;
-                customer.CompanyName = ci.CompanyName;
-                customer.CompanyVorname = ci.CompanyVorname;
-                customer.Salutation = ci.Salutation;
-                customer.Photo = ci.Photo;
-                customer.AddressLine1 = ci.AddressLine1;
-                customer.City = ci.City;
-                customer.ZipCode = ci.ZipCode;
-                customer.State = ci.State;
-                customer.PhoneNumber2 = ci.PhoneNumber2;
-                customer.EMail = ci.EMail;
+                customer = mapper.Map<CustomerDTO, Customer>(dto);
+
+                //customer.CustomerID = ci.CustomerID;
+                //customer.Abteilung = ci.Abteilung;
+                //customer.CustomerCode = ci.CustomerCode;
+                //customer.CompanyName = ci.CompanyName;
+                //customer.CompanyVorname = ci.CompanyVorname;
+                //customer.Salutation = ci.Salutation;
+                //customer.Photo = ci.Photo;
+                //customer.AddressLine1 = ci.AddressLine1;
+                //customer.City = ci.City;
+                //customer.ZipCode = ci.ZipCode;
+                //customer.State = ci.State;
+                //customer.PhoneNumber2 = ci.PhoneNumber2;
+                //customer.EMail = ci.EMail;
 
                 CustomerValidator customerBusinessRules = new CustomerValidator(_customerDataService, customer);
                 ValidationResult results = customerBusinessRules.Validate(customer);
@@ -156,27 +172,14 @@ namespace CodeProjectAngular2.Business
                 _customerDataService.CreateSession();
                 _customerDataService.BeginTransaction();
 
-                if (ci.CustomerID == 0 )
+                if (dto.CustomerID == 0 )
                 {
-                    // !!!!!!! AUTOMAPPER
-                    customer.Salutation = ci.Salutation;
-                    customer.Abteilung = ci.Abteilung;
-                    customer.CompanyVorname = ci.CompanyVorname;
-                    customer.CompanyName = ci.CompanyName;
-                    customer.AddressLine1 = ci.AddressLine1;
-                    customer.AddressLine2 = ci.AddressLine2;
-                    customer.City = ci.City;
-                    customer.State = ci.State;
-                    customer.ZipCode = ci.ZipCode;
-                    customer.Fax = ci.Fax;
-                    customer.PhoneNumber = ci.PhoneNumber;
-                    customer.PhoneNumber2 = ci.PhoneNumber2;
-                    customer.EMail = ci.EMail;
-                    customer.Photo = ci.Photo;
+                    customer = mapper.Map<CustomerDTO, Customer>(dto);
+
                     _customerDataService.CreateCustomer(customer);
                     _customerDataService.CommitTransaction(true);
 
-                    ci.CustomerID = customer.CustomerID;
+                    dto.CustomerID = customer.CustomerID;
 
                     transaction.ReturnStatus = true;
                     transaction.ReturnMessage.Add("Provider was successfully created at " + DateTime.Now.ToString());
@@ -184,22 +187,9 @@ namespace CodeProjectAngular2.Business
                 else
                 {
                     // !!!!!!! AUTOMAPPER
-                    Customer existingCustomer = _customerDataService.GetCustomer(ci.CustomerID);
-                    existingCustomer.Salutation = ci.Salutation;
-                    existingCustomer.Abteilung = ci.Abteilung;
-                    existingCustomer.CustomerCode = ci.CustomerCode;
-                    existingCustomer.CompanyVorname = ci.CompanyVorname;
-                    existingCustomer.CompanyName = ci.CompanyName;
-                    existingCustomer.AddressLine1 = ci.AddressLine1;
-                    existingCustomer.AddressLine2 = ci.AddressLine2;
-                    existingCustomer.City = ci.City;
-                    existingCustomer.State = ci.State;
-                    existingCustomer.ZipCode = ci.ZipCode;
-                    existingCustomer.Fax = ci.Fax;
-                    existingCustomer.PhoneNumber = ci.PhoneNumber;
-                    existingCustomer.PhoneNumber2 = ci.PhoneNumber2;
-                    existingCustomer.EMail = ci.EMail;
-                    existingCustomer.Photo = ci.Photo;
+                    Customer existingCustomer = _customerDataService.GetCustomer(dto.CustomerID);
+
+                    existingCustomer = mapper.Map<CustomerDTO, Customer>(dto);
 
                     _customerDataService.UpdateCustomer(existingCustomer);
                     _customerDataService.CommitTransaction(true);
@@ -308,7 +298,8 @@ namespace CodeProjectAngular2.Business
         private CustomerDTO PopulateCustomerInformation(Customer customer)
         {
             // !!!!!!! AUTOMAPPER
-            var ci = new CustomerDTO();
+            var ci  = mapper.Map<Customer, CustomerDTO>(customer);
+
             ci.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
             ci.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
             ci.Salutation = ReplaceNullValue(customer.Salutation);
@@ -327,6 +318,7 @@ namespace CodeProjectAngular2.Business
             ci.State = ReplaceNullValue(customer.State);
             ci.ZipCode = ReplaceNullValue(customer.ZipCode);
             ci.Photo = customer.Photo;
+            ci.CustDienst = customer.CustDienst;
 
             return ci;
         }

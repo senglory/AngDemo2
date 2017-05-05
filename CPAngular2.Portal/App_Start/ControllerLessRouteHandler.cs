@@ -1,4 +1,4 @@
-﻿namespace CodeProjectAngular2.Portal.ControllerLess.Mvc
+﻿namespace CPAngular2.Portal.ControllerLess.Mvc
 {
     using System.Web;
     using System.Web.Routing;

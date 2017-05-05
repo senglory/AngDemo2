@@ -1,10 +1,9 @@
-﻿import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataGridColumn, DataGridButton, DataGridEventInformation } from '../shared/datagrid/datagrid.core';
 import { DataGrid } from '../shared/datagrid/datagrid.component';
 import { AlertService } from '../services/alert.service';
 import { CustomerService } from '../services/customer.service';
-import { AlertBoxComponent } from '../shared/alertbox.component';
 import { Customer } from '../entities/customer.entity';
 import { CustomersList } from '../entities/customersList.entity';
 import { TransactionalInformation } from '../entities/transactionalinformation.entity';

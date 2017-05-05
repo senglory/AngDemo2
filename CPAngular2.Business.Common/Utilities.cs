@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeProjectAngular2.Business.Common
+namespace CPAngular2.Business.Common
 {
     public static class Utilities
     {

@@ -10,7 +10,7 @@ using System.Web.Routing;
 using NLog;
 
 
-namespace CodeProjectAngular2.Portal
+namespace CPAngular2.Portal
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-using CodeProjectAngular2.Business.Entities;
+using CPAngular2.Business.Entities;
 using System.Configuration;
-using CodeProjectAngular2.Interfaces;
+using CPAngular2.Interfaces;
 
-namespace CodeProjectAngular2.Business
+namespace CPAngular2.Business
 {
     public class CustomerValidator : AbstractValidator<Customer>
     {      

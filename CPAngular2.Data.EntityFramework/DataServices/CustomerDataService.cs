@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeProjectAngular2.Interfaces;
-using CodeProjectAngular2.Business.Entities;
+using CPAngular2.Interfaces;
+using CPAngular2.Business.Entities;
 using System.Linq.Dynamic;
 
-namespace CodeProjectAngular2.Data.EntityFramework
+namespace CPAngular2.Data.EntityFramework
 {
     public class CustomerDataService : EntityFrameworkService, ICustomerDataService
     {

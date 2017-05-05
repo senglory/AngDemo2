@@ -4,9 +4,9 @@ using System.IdentityModel.Protocols.WSTrust;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
-using CodeProjectAngular2.Business.Entities;
+using CPAngular2.Business.Entities;
 
-namespace CodeProjectAngular2.Portal.TokenManagement
+namespace CPAngular2.Portal.TokenManagement
 {
     public class TokenManager
     {

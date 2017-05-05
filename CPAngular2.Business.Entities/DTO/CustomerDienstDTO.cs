@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace CPAngular2.Business.Entities
 {
-    public enum Dienstype
+    public class CustomerDienstDTO
     {
-        Tagdienste,
-        Spatdienste,
-        Nachtdienste,
-        Wochenende,
-        Feiertage,
-        Oder
+        public Dienstype Dienstype { get; set; }
+        public string DienstOder { get; set; }
     }
 }

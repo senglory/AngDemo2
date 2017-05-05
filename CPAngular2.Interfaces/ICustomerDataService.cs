@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeProjectAngular2.Business.Entities;
+using CPAngular2.Business.Entities;
 
-namespace CodeProjectAngular2.Interfaces
+namespace CPAngular2.Interfaces
 {
     public interface ICustomerDataService : IDataRepository, IDisposable
     {

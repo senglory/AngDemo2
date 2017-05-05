@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace CodeProjectAngular2.Portal
+namespace CPAngular2.Portal
 {
     public class RouteConfig
     {
@@ -21,7 +21,7 @@ namespace CodeProjectAngular2.Portal
                             action = "Index",
                             id = UrlParameter.Optional
                         }),
-                        new CodeProjectAngular2.Portal.ControllerLess.Mvc.ControllerLessRouteHandler());
+                        new CPAngular2.Portal.ControllerLess.Mvc.ControllerLessRouteHandler());
 
             routes.Add(route);
 

@@ -1,4 +1,4 @@
-﻿namespace CodeProjectAngular2.Portal.ControllerLess.Configuration
+﻿namespace CPAngular2.Portal.ControllerLess.Configuration
 {
     using System.Configuration;
 

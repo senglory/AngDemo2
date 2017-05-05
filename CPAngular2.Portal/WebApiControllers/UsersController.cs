@@ -4,14 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using CodeProjectAngular2.Business.Entities;
-using CodeProjectAngular2.Interfaces;
-using CodeProjectAngular2.Portal.TokenManagement;
-using CodeProjectAngular2.Business;
+using CPAngular2.Business.Entities;
+using CPAngular2.Interfaces;
+using CPAngular2.Portal.TokenManagement;
+using CPAngular2.Business;
 using System.Security.Claims;
 using Ninject;
 
-namespace CodeProjectAngular2.Portal.WebApiControllers
+namespace CPAngular2.Portal.WebApiControllers
 {
     [RoutePrefix("api/users")]
     public class UsersController : ApiController

@@ -1,7 +1,7 @@
 ﻿@{
     string title = System.Configuration.ConfigurationManager.AppSettings["Title"].ToString();
     Boolean includeBrowserSync = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["IncludeBrowserSync"]);
-    string version = typeof(CodeProjectAngular2.Portal.RouteConfig).Assembly.GetName().Version.ToString();
+    string version = typeof(CPAngular2.Portal.RouteConfig).Assembly.GetName().Version.ToString();
 
 
     string currentRoute = "/";
@@ -35,12 +35,12 @@
     <!--<script src="~/Scripts/core.min.js"></script>-->
     <!--<script src="~/node_modules/es6-shim/es6-shim.min.js"></script>-->
     
-    <script src="~/node_modules/core-js/client/shim.min.js"></script>
-    <script src="~/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="~/node_modules/zone.js/dist/zone.min.js"></script>
+    <script src="~/node_modules/core-js/client/shim.js"></script>
+    <script src="~/node_modules/jquery/dist/jquery.js"></script>
+    <script src="~/node_modules/zone.js/dist/zone.js"></script>
     <script src="~/node_modules/reflect-metadata/Reflect.js"></script>
     <script src="~/node_modules/systemjs/dist/system.src.js"></script>
-    <script src="~/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
     @if (HttpContext.Current.IsDebuggingEnabled)
     {
