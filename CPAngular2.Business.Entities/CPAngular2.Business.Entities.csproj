@@ -44,7 +44,9 @@
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerDienst.cs" />
     <Compile Include="Dienstype.cs" />
+    <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="DTO\CustomerInformation.cs" />
+    <Compile Include="DTO\_BaseDTO.cs" />
     <Compile Include="Geography.cs" />
     <Compile Include="DTO\TransactionalInformation.cs" />
     <Compile Include="User.cs" />

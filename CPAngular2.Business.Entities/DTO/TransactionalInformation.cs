@@ -7,11 +7,8 @@ using System.Collections;
 
 namespace CodeProjectAngular2.Business.Entities
 {
-    public class TransactionalInformation
+    public class TransactionalInformation : _BaseDTO
     {
-        public bool ReturnStatus { get; set; }
-        public List<String> ReturnMessage { get; set; }
-        public Hashtable ValidationErrors { get; set; }
         public int TotalPages { get; set; }
         public int TotalRows { get; set; }
         public int PageSize { get; set; }
@@ -22,9 +19,7 @@ namespace CodeProjectAngular2.Business.Entities
 
         public TransactionalInformation()
         {
-            ReturnMessage = new List<String>();
             ReturnStatus = true;
-            ValidationErrors = new Hashtable();
             TotalPages = 0;
             TotalPages = 0;
             PageSize = 0;

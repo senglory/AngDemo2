@@ -25,7 +25,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label required">Anrede</label>
                                             <div class="col-sm-8">
-                                                <select type="text" class="form-control" [(ngModel)]="salutation" [ngClass]="{'validation-error': salutationInputError}">
+                                                <select type="text" class="form-control" [(ngModel)]="theCustomer.salutation" [ngClass]="{'validation-error': salutationInputError}">
                                                     <option name="Herr" value="Herr">Herr</option>
                                                     <option name="Frau" value="Frau">Frau</option>
                                                 </select>
@@ -36,7 +36,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label required">Vorname</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="companyVorname" [ngClass]="{'validation-error': companyVornameInputError}" />
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.companyVorname" [ngClass]="{'validation-error': companyVornameInputError}" />
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label required">Nachname</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="companyName" [ngClass]="{'validation-error': companyNameInputError}" />
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.companyName" [ngClass]="{'validation-error': companyNameInputError}" />
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group">
-                                            <img [attr.src]='photo' alt="" />
+                                            <img [attr.src]='theCustomer.photo' alt="" />
                                         </div>
                                     </div>
 
@@ -71,7 +71,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="Abteilung" />
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.abteilung" />
                                             </div>
                                         </div>
                                     </div>
@@ -82,14 +82,14 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Telefon</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="phoneNumber">
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.phoneNumber">
                                             </div>
                                         </div>
                                     </div><div class="row">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Fax</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="faxNumber">
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.faxNumber">
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label required">Handy</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="phoneNumber2">
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.phoneNumber2">
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label required">E-Mail</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="eMail">
+                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.eMail">
                                             </div>
                                         </div>
                                     </div>

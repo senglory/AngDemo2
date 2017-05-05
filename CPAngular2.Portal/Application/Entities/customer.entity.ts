@@ -1,6 +1,7 @@
 ﻿import { TransactionalInformation } from './transactionalinformation.entity';
 import { Geography } from './geography.entity';
 import {Availability} from './availability.entity';
+import {Dienst} from './dienst.entity';
 
 export class Customer extends TransactionalInformation {
     public customerID: number;
@@ -9,11 +10,13 @@ export class Customer extends TransactionalInformation {
     public customerCode: string;
     public Abteilung: string;
     public companyName: string;
+
     public addressLine1: string;
     public addressLine2: string;
     public city: string;
     public state: string;
     public zipCode: string;
+
     public phoneNumber: string;
     public phoneNumber2: string;
     public faxNumber: string;
@@ -24,5 +27,7 @@ export class Customer extends TransactionalInformation {
     public availableAllDE: boolean;
     public availableGeo: Array<Geography>;
     public availableTime: Array<Availability>;
-    public customers: Array<Customer>;
+    public custDienst: Array<Dienst>;
+
+
 }

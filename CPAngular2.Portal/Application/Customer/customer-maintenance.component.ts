@@ -33,18 +33,8 @@ export class CustomerMaintenanceComponent implements OnInit {
     public title: string = 'Provider Maintenance';
     public customerID: number;
     public theCustomer: Customer;
-
-    public salutation: string; 
-    public Abteilung: string;
-    public customerCode: string;
-    public companyVorname: string;
-    public companyName: string;
-    public phoneNumber: string;
-    public phoneNumber2: string;
     public address: Address;
-    public fax: string;
-    public eMail: string;
-    public photo: string;
+
     public dienstOder: string;
 
     public showDienstOder: Boolean;
@@ -56,7 +46,6 @@ export class CustomerMaintenanceComponent implements OnInit {
     public companyNameInputError: Boolean;
 
     public messageBox: string;
-    public schedule: Array<Date> = [];
     public alerts: Array<string> = [];
 
 
@@ -117,7 +106,7 @@ export class CustomerMaintenanceComponent implements OnInit {
                     // base64 string or img.src = resized_jpeg if you prefer a file).  
                     this.file_srcs.pop();
                     this.file_srcs.push(resized_pict);
-                    this.photo = resized_pict;
+                    this.theCustomer.photo = resized_pict;
                     // Read the next file;  
                     //this.readFiles(files, index + 1);
                 });
@@ -164,6 +153,7 @@ export class CustomerMaintenanceComponent implements OnInit {
         this.showUpdateButton = false;
         this.showAddButton = false;
 
+        this.theCustomer = new Customer();
         this.address = new Address();
 
         this.route.params.subscribe(params => {
@@ -191,20 +181,13 @@ export class CustomerMaintenanceComponent implements OnInit {
     }
 
     private getCustomerOnSuccess(cust: Customer) {
-        this.Abteilung = cust.Abteilung;
-        this.salutation = cust.salutation;
-        this.customerCode = cust.customerCode;
-        this.companyVorname = cust.companyVorname;
-        this.companyName = cust.companyName;
-        this.phoneNumber = cust.phoneNumber;
-        this.phoneNumber2 = cust.phoneNumber2;
-        this.eMail = cust.eMail;
+        this.theCustomer = cust;
+
         this.address.addressLine1 = cust.addressLine1;
         this.address.addressLine2 = cust.addressLine2;
         this.address.city = cust.city;
         this.address.state = cust.state;
         this.address.zipCode = cust.zipCode;
-        this.photo = cust.photo;
 
         this.showUpdateButton = true;
         this.showAddButton = false;
@@ -219,23 +202,23 @@ export class CustomerMaintenanceComponent implements OnInit {
 
     public updateCustomer(): void {
 
-        let cust = new Customer();
+        let cust = this.theCustomer;
 
         cust.customerID = this.customerID;
-        cust.Abteilung = this.Abteilung;
-        cust.salutation = this.salutation;
-        cust.customerCode = this.customerCode;
-        cust.companyVorname = this.companyVorname;
-        cust.companyName = this.companyName;
-        cust.phoneNumber = this.phoneNumber;
-        cust.phoneNumber2 = this.phoneNumber2;
-        cust.eMail = this.eMail;
+        //cust.Abteilung = this.Abteilung;
+        //cust.salutation = this.salutation;
+        //cust.customerCode = this.customerCode;
+        //cust.companyVorname = this.companyVorname;
+        //cust.companyName = this.companyName;
+        //cust.phoneNumber = this.phoneNumber;
+        //cust.phoneNumber2 = this.phoneNumber2;
+        //cust.eMail = this.eMail;
         cust.addressLine1 = this.address.addressLine1;
         cust.addressLine2 = this.address.addressLine2;
         cust.city = this.address.city;
         cust.state = this.address.state;
         cust.zipCode = this.address.zipCode;
-        cust.photo = this.photo;
+        //cust.photo = this.photo;
 
         this.clearInputErrors();
    
@@ -262,7 +245,7 @@ export class CustomerMaintenanceComponent implements OnInit {
         this.alertService.renderErrorMessage(cust.returnMessage);
         this.messageBox = this.alertService.returnFormattedMessage();
         this.alerts = this.alertService.returnAlerts();
-        this.alertService.setValidationErrors(this, cust.validationErrors);    
+        this.alertService.setValidationErrors(this, cust.validationErrors);
     }
 
 
@@ -271,6 +254,4 @@ export class CustomerMaintenanceComponent implements OnInit {
         this.companyNameInputError = false;
         this.salutationInputError = false;
     }
-
-
 }

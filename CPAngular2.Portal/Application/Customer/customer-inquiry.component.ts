@@ -6,6 +6,7 @@ import { AlertService } from '../services/alert.service';
 import { CustomerService } from '../services/customer.service';
 import { AlertBoxComponent } from '../shared/alertbox.component';
 import { Customer } from '../entities/customer.entity';
+import { CustomersList } from '../entities/customersList.entity';
 import { TransactionalInformation } from '../entities/transactionalinformation.entity';
 
 export var debugVersion = "?version=" + Date.now();
@@ -96,7 +97,7 @@ export class CustomerInquiryComponent implements OnInit {
     }
 
 
-    private getCustomersOnSuccess(cust: Customer): void {
+    private getCustomersOnSuccess(cust: CustomersList): void {
 
         let ti = new TransactionalInformation();
         ti.currentPageNumber = this.currentPageNumber;

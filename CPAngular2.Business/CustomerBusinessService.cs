@@ -6,9 +6,10 @@ using System.IO;
 using CodeProjectAngular2.Business.Entities;
 using CodeProjectAngular2.Interfaces;
 using CodeProjectAngular2.Business.Common;
-using FluentValidation.Results;
 
+using FluentValidation.Results;
 using NLog;
+
 
 namespace CodeProjectAngular2.Business
 {
@@ -117,7 +118,7 @@ namespace CodeProjectAngular2.Business
         /// </summary>
         /// <param name="ci"></param>
         /// <param name="transaction"></param>
-        public void UpdateCustomer(CustomerInformation ci, out TransactionalInformation transaction)
+        public void UpdateCustomer(CustomerDTO ci, out TransactionalInformation transaction)
         {
             transaction = new TransactionalInformation();
 
@@ -125,7 +126,9 @@ namespace CodeProjectAngular2.Business
 
             try
             {
+                // !!!!!!! AUTOMAPPER
                 customer.CustomerID = ci.CustomerID;
+                customer.Abteilung = ci.Abteilung;
                 customer.CustomerCode = ci.CustomerCode;
                 customer.CompanyName = ci.CompanyName;
                 customer.CompanyVorname = ci.CompanyVorname;
@@ -155,6 +158,7 @@ namespace CodeProjectAngular2.Business
 
                 if (ci.CustomerID == 0 )
                 {
+                    // !!!!!!! AUTOMAPPER
                     customer.Salutation = ci.Salutation;
                     customer.Abteilung = ci.Abteilung;
                     customer.CompanyVorname = ci.CompanyVorname;
@@ -179,6 +183,7 @@ namespace CodeProjectAngular2.Business
                 }
                 else
                 {
+                    // !!!!!!! AUTOMAPPER
                     Customer existingCustomer = _customerDataService.GetCustomer(ci.CustomerID);
                     existingCustomer.Salutation = ci.Salutation;
                     existingCustomer.Abteilung = ci.Abteilung;
@@ -214,10 +219,6 @@ namespace CodeProjectAngular2.Business
             {
                 _customerDataService.CloseSession();
             }
-
-            return;
-
-
         }
 
 
@@ -270,18 +271,17 @@ namespace CodeProjectAngular2.Business
         /// <param name="customerID"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public CustomerInformation GetCustomer(int customerID, out TransactionalInformation transaction)
+        public CustomerDTO GetCustomer(int customerID, out TransactionalInformation transaction)
         {
             transaction = new TransactionalInformation();
 
-            CustomerInformation customerInformation = new CustomerInformation();
-
+            var ci = new CustomerDTO();
 
             try
             {
                 _customerDataService.CreateSession();
                 Customer customer = _customerDataService.GetCustomer(customerID);
-                customerInformation = PopulateCustomerInformation(customer);
+                ci = PopulateCustomerInformation(customer);
             }
             catch (Exception ex)
             {
@@ -296,7 +296,7 @@ namespace CodeProjectAngular2.Business
                 _customerDataService.CloseSession();
             }
 
-            return customerInformation;
+            return ci;
 
         }
 
@@ -305,9 +305,10 @@ namespace CodeProjectAngular2.Business
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        private CustomerInformation PopulateCustomerInformation(Customer customer)
+        private CustomerDTO PopulateCustomerInformation(Customer customer)
         {
-            CustomerInformation ci = new CustomerInformation();
+            // !!!!!!! AUTOMAPPER
+            var ci = new CustomerDTO();
             ci.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
             ci.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
             ci.Salutation = ReplaceNullValue(customer.Salutation);
@@ -340,9 +341,5 @@ namespace CodeProjectAngular2.Business
             if (inputString == "NULL") return string.Empty;
             return inputString;
         }
-
-
-
     }
-
 }

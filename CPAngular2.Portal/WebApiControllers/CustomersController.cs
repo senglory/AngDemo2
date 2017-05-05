@@ -30,9 +30,8 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
         /// <returns></returns>
         [Route("ImportCustomers")]
         [HttpPost]
-        public HttpResponseMessage ImportCustomers(HttpRequestMessage request, [FromBody] CustomerInformation customerInformation)
+        public HttpResponseMessage ImportCustomers(HttpRequestMessage request, [FromBody] CustomerInformation ci)
         {
-
             TransactionalInformation transaction = new TransactionalInformation();
 
             CustomerBusinessService customerBusinessService = new CustomerBusinessService(_customerDataService);
@@ -43,11 +42,11 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
                 return badResponse;
             }
 
-            customerInformation = new CustomerInformation();
-            customerInformation.ReturnMessage = transaction.ReturnMessage;
-            customerInformation.ReturnStatus = transaction.ReturnStatus;
+            ci = new CustomerInformation();
+            ci.ReturnMessage = transaction.ReturnMessage;
+            ci.ReturnStatus = transaction.ReturnStatus;
 
-            var response = Request.CreateResponse<CustomerInformation>(HttpStatusCode.OK, customerInformation);          
+            var response = Request.CreateResponse<CustomerInformation>(HttpStatusCode.OK, ci);          
             return response;
 
         }
@@ -60,17 +59,17 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
         /// <returns></returns>
         [Route("GetCustomers")]
         [HttpPost]
-        public HttpResponseMessage GetCustomers(HttpRequestMessage request, [FromBody] CustomerInformation customerInformation)
+        public HttpResponseMessage GetCustomers(HttpRequestMessage request, [FromBody] CustomerInformation ci)
         {
 
             TransactionalInformation transaction = new TransactionalInformation();
 
-            string customerCode = customerInformation.CustomerCode;
-            string companyName = customerInformation.CompanyName;
-            int currentPageNumber = customerInformation.CurrentPageNumber;
-            int pageSize = customerInformation.PageSize;
-            string sortExpression = customerInformation.SortExpression;
-            string sortDirection = customerInformation.SortDirection;
+            string customerCode = ci.CustomerCode;
+            string companyName = ci.CompanyName;
+            int currentPageNumber = ci.CurrentPageNumber;
+            int pageSize = ci.PageSize;
+            string sortExpression = ci.SortExpression;
+            string sortDirection = ci.SortDirection;
 
             int totalRows = 0;
 
@@ -82,14 +81,14 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
                 return badResponse;
             }
 
-            customerInformation = new CustomerInformation();        
-            customerInformation.ReturnStatus = transaction.ReturnStatus;
-            customerInformation.TotalRows = totalRows;
-            customerInformation.TotalPages = Utilities.CalculateTotalPages(totalRows, pageSize);
-            customerInformation.ReturnMessage.Add("page " + currentPageNumber + " of " + customerInformation.TotalPages + " returned at " + DateTime.Now.ToString());
-            customerInformation.Customers = customers;
+            ci = new CustomerInformation();
+            ci.ReturnStatus = transaction.ReturnStatus;
+            ci.TotalRows = totalRows;
+            ci.TotalPages = Utilities.CalculateTotalPages(totalRows, pageSize);
+            ci.ReturnMessage.Add("page " + currentPageNumber + " of " + ci.TotalPages + " returned at " + DateTime.Now.ToString());
+            ci.Customers = customers;
 
-            var response = Request.CreateResponse<CustomerInformation>(HttpStatusCode.OK, customerInformation);
+            var response = Request.CreateResponse<CustomerInformation>(HttpStatusCode.OK, ci);
             return response;
 
         }
@@ -98,28 +97,27 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
         /// Get Customer
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="customerInformation"></param>
+        /// <param name="dto"></param>
         /// <returns></returns>
         [Route("GetCustomer")]
         [HttpPost]
-        public HttpResponseMessage GetCustomer(HttpRequestMessage request, [FromBody] CustomerInformation customerInformation)
+        public HttpResponseMessage GetCustomer(HttpRequestMessage request, [FromBody] CustomerDTO dto)
         {
-
             TransactionalInformation transaction = new TransactionalInformation();
 
-            int customerID = customerInformation.CustomerID;          
+            int customerID = dto.CustomerID;
 
             CustomerBusinessService customerBusinessService = new CustomerBusinessService(_customerDataService);
-            customerInformation = customerBusinessService.GetCustomer(customerID, out transaction);
+            dto = customerBusinessService.GetCustomer(customerID, out transaction);
             if (transaction.ReturnStatus == false)
             {
                 var badResponse = Request.CreateResponse<TransactionalInformation>(HttpStatusCode.BadRequest, transaction);
                 return badResponse;
             }
          
-            customerInformation.ReturnStatus = transaction.ReturnStatus;           
+            dto.ReturnStatus = transaction.ReturnStatus;
 
-            var response = Request.CreateResponse<CustomerInformation>(HttpStatusCode.OK, customerInformation);
+            var response = Request.CreateResponse<CustomerDTO>(HttpStatusCode.OK, dto);
             return response;
 
         }
@@ -129,11 +127,11 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
         /// Update Profile
         /// </summary>
         /// <param name="request"></param>
-        /// <param name="customerInformation"></param>
+        /// <param name="dto"></param>
         /// <returns></returns>
         [Route("UpdateCustomer")]
         [HttpPost]
-        public HttpResponseMessage UpdateCustomer(HttpRequestMessage request, [FromBody] CustomerInformation customerInformation)
+        public HttpResponseMessage UpdateCustomer(HttpRequestMessage request, [FromBody] CustomerDTO dto)
         {
 
             TransactionalInformation transaction = new TransactionalInformation();
@@ -161,27 +159,22 @@ namespace CodeProjectAngular2.Portal.WebApiControllers
             //    return badResponse;
             //}
             var rd = new Random();
-            if (customerInformation.CustomerCode == null)
-                customerInformation.CustomerCode = rd.Next().ToString();
+            if (dto.CustomerCode == null)
+                dto.CustomerCode = rd.Next().ToString();
 
             CustomerBusinessService customerBusinessService = new CustomerBusinessService(_customerDataService);
-            customerBusinessService.UpdateCustomer(customerInformation, out transaction);
+            customerBusinessService.UpdateCustomer(dto, out transaction);
             if (transaction.ReturnStatus == false)
             {
                 var badResponse = Request.CreateResponse<TransactionalInformation>(HttpStatusCode.BadRequest, transaction);
                 return badResponse;
             }
 
-            customerInformation.ReturnStatus = true;
-            customerInformation.ReturnMessage = transaction.ReturnMessage;
+            dto.ReturnStatus = true;
+            dto.ReturnMessage = transaction.ReturnMessage;
 
-            var response = Request.CreateResponse<CustomerInformation>(HttpStatusCode.OK, customerInformation);
+            var response = Request.CreateResponse<CustomerDTO>(HttpStatusCode.OK, dto);
             return response;
-
-
         }
-
-
-
     }
 }
