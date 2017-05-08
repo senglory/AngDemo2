@@ -32,7 +32,119 @@ namespace CPAngular2.Business
 
             config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Customer, CustomerDTO>();
+                cfg.CreateMap<Customer, CustomerDTO>()
+                    .ForMember(d => d.AddressLine1, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.AddressLine1 == "NULL") return string.Empty;
+                            return ls.AddressLine1;
+                        }
+                    }))
+                    .ForMember(d => d.AddressLine2, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.AddressLine2 == "NULL") return string.Empty;
+                            return ls.AddressLine2;
+                        }
+                    }))
+                    .ForMember(d => d.Salutation, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.Salutation == "NULL") return string.Empty;
+                            return ls.Salutation;
+                        }
+                    }))
+                    .ForMember(d => d.Abteilung, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.Abteilung == "NULL") return string.Empty;
+                            return ls.Abteilung;
+                        }
+                    }))
+                    .ForMember(d => d.City, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.City == "NULL") return string.Empty;
+                            return ls.City;
+                        }
+                    }))
+                    .ForMember(d => d.CompanyVorname, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.CompanyVorname == "NULL") return string.Empty;
+                            return ls.CompanyVorname;
+                        }
+                    }))
+                    .ForMember(d => d.CompanyName, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.CompanyName == "NULL") return string.Empty;
+                            return ls.CompanyName;
+                        }
+                    }))
+                    .ForMember(d => d.CustomerCode, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.CustomerCode == "NULL") return string.Empty;
+                            return ls.CustomerCode;
+                        }
+                    }))
+                    .ForMember(d => d.PhoneNumber, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.PhoneNumber == "NULL") return string.Empty;
+                            return ls.PhoneNumber;
+                        }
+                    }))
+                    .ForMember(d => d.PhoneNumber2, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.PhoneNumber2 == "NULL") return string.Empty;
+                            return ls.PhoneNumber2;
+                        }
+                    }))
+                    .ForMember(d => d.Fax, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.Fax == "NULL") return string.Empty;
+                            return ls.Fax;
+                        }
+                    }))
+                    .ForMember(d => d.EMail, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.EMail == "NULL") return string.Empty;
+                            return ls.EMail;
+                        }
+                    }))
+                    .ForMember(d => d.State, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.State == "NULL") return string.Empty;
+                            return ls.State;
+                        }
+                    }))
+                    .ForMember(d => d.ZipCode, op => op.ResolveUsing(ctx =>
+                    {
+                        {
+                            var ls = ctx;
+                            if (ls.ZipCode == "NULL") return string.Empty;
+                            return ls.ZipCode;
+                        }
+                    }));
                 cfg.CreateMap<CustomerDTO, Customer>();
                 cfg.CreateMap<CustomerDienstDTO, CustomerDienst>();
                 cfg.CreateMap<CustomerDienst, CustomerDienstDTO>();
@@ -137,7 +249,7 @@ namespace CPAngular2.Business
         {
             transaction = new TransactionalInformation();
 
-            Customer customer ;
+            Customer customer;
 
             try
             {
@@ -172,7 +284,7 @@ namespace CPAngular2.Business
                 _customerDataService.CreateSession();
                 _customerDataService.BeginTransaction();
 
-                if (dto.CustomerID == 0 )
+                if (dto.CustomerID == 0)
                 {
                     customer = mapper.Map<CustomerDTO, Customer>(dto);
 
@@ -236,7 +348,7 @@ namespace CPAngular2.Business
             try
             {
                 _customerDataService.CreateSession();
-                customers = _customerDataService.GetCustomers(customerCode, companyName, currentPageNumber,pageSize, sortDirection,sortExpression, out totalRows);
+                customers = _customerDataService.GetCustomers(customerCode, companyName, currentPageNumber, pageSize, sortDirection, sortExpression, out totalRows);
             }
             catch (Exception ex)
             {
@@ -298,27 +410,27 @@ namespace CPAngular2.Business
         private CustomerDTO PopulateCustomerInformation(Customer customer)
         {
             // !!!!!!! AUTOMAPPER
-            var ci  = mapper.Map<Customer, CustomerDTO>(customer);
+            var ci = mapper.Map<Customer, CustomerDTO>(customer);
 
-            ci.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
-            ci.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
-            ci.Salutation = ReplaceNullValue(customer.Salutation);
-            ci.Abteilung = ReplaceNullValue(customer.Abteilung);
-            ci.City = ReplaceNullValue(customer.City);
-            ci.CompanyVorname = ReplaceNullValue(customer.CompanyVorname);
-            ci.CompanyName = ReplaceNullValue(customer.CompanyName);
-            ci.CustomerCode = ReplaceNullValue(customer.CustomerCode);
-            ci.CustomerID = customer.CustomerID;
-            ci.DateCreated = customer.DateCreated;
-            ci.DateUpdated = customer.DateUpdated;
-            ci.Fax = ReplaceNullValue(customer.Fax);
-            ci.PhoneNumber = ReplaceNullValue(customer.PhoneNumber);
-            ci.PhoneNumber2 = ReplaceNullValue(customer.PhoneNumber2);
-            ci.EMail = ReplaceNullValue(customer.EMail);
-            ci.State = ReplaceNullValue(customer.State);
-            ci.ZipCode = ReplaceNullValue(customer.ZipCode);
-            ci.Photo = customer.Photo;
-            ci.CustDienst = customer.CustDienst;
+            //ci.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
+            //ci.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
+            //ci.Salutation = ReplaceNullValue(customer.Salutation);
+            //ci.Abteilung = ReplaceNullValue(customer.Abteilung);
+            //ci.City = ReplaceNullValue(customer.City);
+            //ci.CompanyVorname = ReplaceNullValue(customer.CompanyVorname);
+            //ci.CompanyName = ReplaceNullValue(customer.CompanyName);
+            //ci.CustomerCode = ReplaceNullValue(customer.CustomerCode);
+            //ci.CustomerID = customer.CustomerID;
+            //ci.DateCreated = customer.DateCreated;
+            //ci.DateUpdated = customer.DateUpdated;
+            //ci.Fax = ReplaceNullValue(customer.Fax);
+            //ci.PhoneNumber = ReplaceNullValue(customer.PhoneNumber);
+            //ci.PhoneNumber2 = ReplaceNullValue(customer.PhoneNumber2);
+            //ci.EMail = ReplaceNullValue(customer.EMail);
+            //ci.State = ReplaceNullValue(customer.State);
+            //ci.ZipCode = ReplaceNullValue(customer.ZipCode);
+            //ci.Photo = customer.Photo;
+            //ci.CustDienst = customer.CustDienst;
 
             return ci;
         }
