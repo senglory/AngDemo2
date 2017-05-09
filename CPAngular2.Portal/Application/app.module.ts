@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { AlertModule } from 'ng2-bootstrap';
+//import { AlertModule } from 'ng2-bootstrap/components/alert';
+
 
 import { DatepickerModule } from 'angular2-material-datepicker';
 import { SessionService } from './services/session.service';
@@ -42,7 +44,7 @@ import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
         DatepickerModule,
         HttpModule,
         RouterModule.forRoot(AppRoutes),
-        AlertModule
+        AlertModule.forRoot()
     ],
     declarations: [
         DataGrid,

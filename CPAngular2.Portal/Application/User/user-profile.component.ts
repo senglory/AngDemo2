@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../entities/user.entity';
 import { Address } from '../entities/address.entity';
+import { Alert } from '../entities/alert.entity';
 
 import { AlertBoxComponent } from '../shared/alertbox.component';
 import { UserService } from '../services/user.service';
@@ -23,7 +24,7 @@ export class UserProfileComponent implements OnInit {
 
     public title: string = 'User Profile';  
     public messageBox: string;
-    public alerts: Array<string> = [];
+    public alerts: Array<Alert> = [];
     public address: Address;
     public firstName: string;
     public lastName: string;

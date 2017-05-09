@@ -1,5 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { User } from '../entities/user.entity';
+import { Alert } from '../entities/alert.entity';
 
 import { AlertBoxComponent } from '../shared/alertbox.component';
 import { UserService } from '../services/user.service';
@@ -21,7 +22,7 @@ export class LoginComponent {
     public emailAddress: string = "";
     public password: string = "";
     public messageBox: string;
-    public alerts: Array<string> = [];
+    public alerts: Array<Alert> = [];
 
     constructor(private userService: UserService, private sessionService: SessionService, private alertService: AlertService, private router: Router) { }  
 

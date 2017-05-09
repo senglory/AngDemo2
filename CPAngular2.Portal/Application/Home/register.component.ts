@@ -7,6 +7,7 @@ import { SessionService } from '../services/session.service';
 import { AlertService } from '../services/alert.service';
 import { Router } from '@angular/router';
 import { AlertBoxComponent } from '../shared/alertbox.component';
+import { Alert } from '../entities/alert.entity';
 
 export var debugVersion = "?version=" + Date.now();
 
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
     public emailAddress: string = "";
     public password: string = "";
     public passwordConfirmation: string = "";
-    public alerts: Array<string> = [];
+    public alerts: Array<Alert> = [];
     public messageBox: string;
 
     public firstNameInputError: Boolean;

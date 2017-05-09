@@ -285,6 +285,7 @@
     <TypeScriptCompile Include="Application\Customer\languages.ts" />
     <TypeScriptCompile Include="Application\Customer\out-of-germany.ts" />
     <TypeScriptCompile Include="Application\Entities\address.entity.ts" />
+    <TypeScriptCompile Include="Application\Entities\alert.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\availability.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\customer.entity.ts" />
     <TypeScriptCompile Include="Application\Entities\customersList.entity.ts" />

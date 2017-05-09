@@ -30,6 +30,7 @@ namespace CPAngular2.Data.EntityFramework
         public void UpdateCustomer(Customer customer)
         {
             customer.DateUpdated = DateTime.Now;
+            dbConnection.SaveChanges();
         }
 
         /// <summary>
@@ -84,8 +85,8 @@ namespace CPAngular2.Data.EntityFramework
 
             if (sortDirection.Length == 0) sortDirection = "ASC";
 
-            sortExpression = sortExpression + " " + sortDirection;            
-         
+            sortExpression = sortExpression + " " + sortDirection;
+
             var customerQuery = dbConnection.Customers.AsQueryable();
 
             if (customerCode != null && customerCode.Trim().Length > 0)

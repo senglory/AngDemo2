@@ -3,6 +3,7 @@ import { AlertService } from '../services/alert.service';
 import { AlertBoxComponent } from '../shared/alertbox.component';
 import { CustomerService } from '../services/customer.service';
 import { Customer } from '../entities/customer.entity';
+import { Alert } from '../entities/alert.entity';
 
 export var debugVersion = "?version=" + Date.now();
 
@@ -15,7 +16,7 @@ export class ImportCustomersComponent implements OnInit {
 
     public title: string = 'Import Customers';
 
-    public alerts: Array<string> = [];
+    public alerts: Array<Alert> = [];
     public messageBox: string;
 
     constructor(private customerService: CustomerService, private alertService: AlertService) { }

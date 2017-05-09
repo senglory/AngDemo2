@@ -7,6 +7,7 @@ import { CustomerService } from '../services/customer.service';
 import { Customer } from '../entities/customer.entity';
 import { CustomersList } from '../entities/customersList.entity';
 import { TransactionalInformation } from '../entities/transactionalinformation.entity';
+import { Alert } from '../entities/alert.entity';
 
 export var debugVersion = "?version=" + Date.now();
 
@@ -23,7 +24,7 @@ export class CustomerInquiryComponent implements OnInit {
     public customers: Customer[];
     public columns = [];
 
-    public alerts: Array<string> = [];
+    public alerts: Array<Alert> = [];
     public messageBox: string;
 
     public totalRows: number;

@@ -1,15 +1,15 @@
-﻿
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
+import { Alert } from '../entities/alert.entity'
 
 @Injectable()
 export class AlertService {
 
-    private alerts = [];
+    private alerts: Alert[]=[];
     private messageBox = "";
 
     constructor() { }
 
-    setValidationErrors(scope, validationErrors) {       
+    setValidationErrors(scope, validationErrors) {
         for (var prop in validationErrors) {
             var property = prop + "InputError";
             scope[property] = true;
@@ -28,7 +28,7 @@ export class AlertService {
 
         let messageBox = this.formatMessage(message);
 
-        this.alerts = [];
+        this.alerts = new Array<Alert>();
         this.messageBox = messageBox;
         this.alerts.push({ msg: messageBox, type: 'danger', closable: true });
 
@@ -38,7 +38,7 @@ export class AlertService {
 
         let messageBox = this.formatMessage(message);
 
-        this.alerts = [];
+        this.alerts = new Array<Alert>();
         this.messageBox = messageBox;
         this.alerts.push({ msg: messageBox, type: 'success', closable: true });
 
@@ -58,7 +58,7 @@ export class AlertService {
 
         let messageBox = this.formatMessage(message);
 
-        this.alerts = [];
+        this.alerts = new Array<Alert>();
         this.messageBox = messageBox;
         this.alerts.push({ msg: messageBox, type: 'info', closable: true });
 
@@ -68,7 +68,7 @@ export class AlertService {
 
         let messageBox = "";
 
-        if (Array.isArray(message) == true ) {      
+        if (Array.isArray(message) == true ) {
             for (var i = 0; i < message.length; i++) {
                 messageBox = messageBox + message[i] + "<br/>";
             }
@@ -78,7 +78,5 @@ export class AlertService {
         }
 
         return messageBox;
-
     }
-
 }

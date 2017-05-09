@@ -383,7 +383,7 @@ namespace CPAngular2.Business
             {
                 _customerDataService.CreateSession();
                 Customer customer = _customerDataService.GetCustomer(customerID);
-                ci = PopulateCustomerInformation(customer);
+                ci = mapper.Map<Customer, CustomerDTO>(customer);
             }
             catch (Exception ex)
             {
@@ -402,38 +402,7 @@ namespace CPAngular2.Business
 
         }
 
-        /// <summary>
-        /// Populate Customer Information
-        /// </summary>
-        /// <param name="customer"></param>
-        /// <returns></returns>
-        private CustomerDTO PopulateCustomerInformation(Customer customer)
-        {
-            // !!!!!!! AUTOMAPPER
-            var ci = mapper.Map<Customer, CustomerDTO>(customer);
 
-            //ci.AddressLine1 = ReplaceNullValue(customer.AddressLine1);
-            //ci.AddressLine2 = ReplaceNullValue(customer.AddressLine2);
-            //ci.Salutation = ReplaceNullValue(customer.Salutation);
-            //ci.Abteilung = ReplaceNullValue(customer.Abteilung);
-            //ci.City = ReplaceNullValue(customer.City);
-            //ci.CompanyVorname = ReplaceNullValue(customer.CompanyVorname);
-            //ci.CompanyName = ReplaceNullValue(customer.CompanyName);
-            //ci.CustomerCode = ReplaceNullValue(customer.CustomerCode);
-            //ci.CustomerID = customer.CustomerID;
-            //ci.DateCreated = customer.DateCreated;
-            //ci.DateUpdated = customer.DateUpdated;
-            //ci.Fax = ReplaceNullValue(customer.Fax);
-            //ci.PhoneNumber = ReplaceNullValue(customer.PhoneNumber);
-            //ci.PhoneNumber2 = ReplaceNullValue(customer.PhoneNumber2);
-            //ci.EMail = ReplaceNullValue(customer.EMail);
-            //ci.State = ReplaceNullValue(customer.State);
-            //ci.ZipCode = ReplaceNullValue(customer.ZipCode);
-            //ci.Photo = customer.Photo;
-            //ci.CustDienst = customer.CustDienst;
-
-            return ci;
-        }
 
         /// <summary>
         /// Replace NULL value 

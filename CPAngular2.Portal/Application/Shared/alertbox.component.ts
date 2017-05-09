@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { AlertComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { Alert } from '../entities/alert.entity'
+
 
 export var debugVersion = "?version=" + Date.now();
 
@@ -10,7 +12,7 @@ export var debugVersion = "?version=" + Date.now();
 
 export class AlertBoxComponent implements OnInit {
   
-    @Input() public alerts: Array<string> = [];
+    @Input() public alerts: Alert[];
     @Input() public messageBox: string;
 
     constructor() { }

@@ -5,6 +5,7 @@ import { Customer } from '../entities/customer.entity';
 import { Dienst } from '../entities/dienst.entity';
 import { CustomerService } from '../services/customer.service';
 import { AlertService } from '../services/alert.service';
+import { Alert } from '../entities/alert.entity';
 //import { AddressComponent } from '../shared/address.component';
 //import { InGermany }  from './cludge';
 //import { OutOfGermany }  from './out-of-germany';
@@ -43,7 +44,7 @@ export class CustomerMaintenanceComponent implements OnInit {
     public companyNameInputError: Boolean;
 
     public messageBox: string;
-    public alerts: Array<string> = [];
+    public alerts: Array<Alert> = [];
 
 
 
