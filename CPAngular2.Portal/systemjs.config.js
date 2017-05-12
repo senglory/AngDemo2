@@ -16,7 +16,7 @@
 
             'rxjs': 'npm:rxjs',
 
-            'ng2-bootstrap': 'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.min.js',
+            'ng2-bootstrap': 'npm:ng2-bootstrap/bundles/ngx-bootstrap.umd.min.js',
             'angular2-material-datepicker': 'npm:angular2-material-datepicker'
         },
         packages: {

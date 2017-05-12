@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using CPAngular2.Interfaces;
 using CPAngular2.Business.Entities;
 using System.Linq.Dynamic;
+using System.Data.Entity;
 
 namespace CPAngular2.Data.EntityFramework
 {
@@ -26,12 +28,18 @@ namespace CPAngular2.Data.EntityFramework
         /// <summary>
         /// Update Customer
         /// </summary>
-        /// <param name="customer"></param>
-        public void UpdateCustomer(Customer customer)
+        /// <param name="dto"></param>
+        public void UpdateCustomer(Customer dto)
         {
-            customer.DateUpdated = DateTime.Now;
+            dto.DateUpdated = DateTime.Now;
+            var customer = dbConnection.Customers.FirstOrDefault(x => x.CustomerID == dto.CustomerID);
+            var cust2 = dbConnection.Entry(customer);
+
+            cust2.CurrentValues.SetValues(dto);
+
             dbConnection.SaveChanges();
         }
+
 
         /// <summary>
         /// Validate Duplicate Customer

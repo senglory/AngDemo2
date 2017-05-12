@@ -10,7 +10,7 @@ namespace CPAngular2.Interfaces
     public interface ICustomerDataService : IDataRepository, IDisposable
     {
         void CreateCustomer(Customer customer);
-        void UpdateCustomer(Customer customer);       
+        void UpdateCustomer(Customer customer);
         Customer GetCustomer(int customerID);
         List<Customer> GetCustomers(string customerCode, string companyName, int currentPageNumber, int pageSize, string sortDirection, string sortExpression, out int totalRows);
         List<Customer> GetCustomers(string customerCode);

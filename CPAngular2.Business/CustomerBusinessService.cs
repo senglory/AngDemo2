@@ -298,10 +298,7 @@ namespace CPAngular2.Business
                 }
                 else
                 {
-                    // !!!!!!! AUTOMAPPER
-                    Customer existingCustomer = _customerDataService.GetCustomer(dto.CustomerID);
-
-                    existingCustomer = mapper.Map<CustomerDTO, Customer>(dto);
+                    Customer existingCustomer = mapper.Map<CustomerDTO, Customer>(dto);
 
                     _customerDataService.UpdateCustomer(existingCustomer);
                     _customerDataService.CommitTransaction(true);
