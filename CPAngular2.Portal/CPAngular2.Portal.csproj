@@ -313,6 +313,8 @@
     <TypeScriptCompile Include="Application\Shared\DataGrid\datagrid.component.ts" />
     <TypeScriptCompile Include="Application\Shared\DataGrid\datagrid.core.ts" />
     <TypeScriptCompile Include="Application\Shared\master.component.ts" />
+    <TypeScriptCompile Include="Application\Shared\tab.ts" />
+    <TypeScriptCompile Include="Application\Shared\tabs.ts" />
     <TypeScriptCompile Include="Application\User\user-profile.component.ts" />
   </ItemGroup>
   <ItemGroup>
