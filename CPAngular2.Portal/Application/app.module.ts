@@ -34,6 +34,9 @@ import { DataGrid } from './shared/datagrid/datagrid.component';
 import { AppRoutes } from './application-routes';
 import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
 
+import {Tabs} from './shared/tabs';
+import {Tab} from './shared/tab';
+
 //import * as LINQ from 'linqscript/source/source';
 
 
@@ -47,6 +50,7 @@ import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
         AlertModule.forRoot()
     ],
     declarations: [
+        AppComponent,
         DataGrid,
         InGermany,
         DienstSelector,
@@ -57,14 +61,15 @@ import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
         RegisterComponent,
         LoginComponent,
         MasterComponent, 
-        AppComponent,
         HomeComponent,
         AboutComponent,
         ImportCustomersComponent,
         CustomerInquiryComponent,
         CustomerMaintenanceComponent,
         UserProfileComponent,
-        ContactComponent
+        ContactComponent,
+        Tabs,
+        Tab
     ],
     providers: [
         AuthorizationGuard,

@@ -7,157 +7,150 @@
 
     <div class="form-horizontal" role="form">
 
-            <div class="panel with-nav-tabs panel-default">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1default"  data-toggle="tab" >Main data</a></li>
-                        <li><a href="#tab2default" data-toggle="tab">Geography</a></li>
-                        <li><a href="#tab21default" data-toggle="tab">Time</a></li>
-                        <li><a href="#tab3default" data-toggle="tab">Skills</a></li>
-                    </ul>
-                </div>
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1default">
-                            <div class="container" >
-                                <div class="col-sm-6 " >
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label required">Anrede</label>
-                                            <div class="col-sm-8">
-                                                <select type="text" class="form-control" [(ngModel)]="theCustomer.salutation" [ngClass]="{'validation-error': salutationInputError}">
-                                                    <option name="Herr" value="Herr">Herr</option>
-                                                    <option name="Frau" value="Frau">Frau</option>
-                                                </select>
-                                            </div>
-                                        </div>
+        <tabs>
+            <tab [tabTitle]="'Main data'">
+                <div class="tab-pane" id="tab1default">
+                    <div class="container">
+                        <div class="col-sm-6 ">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label required">Anrede</label>
+                                    <div class="col-sm-8">
+                                        <select type="text" class="form-control" [(ngModel)]="theCustomer.salutation" [ngClass]="{'validation-error': salutationInputError}">
+                                            <option name="Herr" value="Herr">Herr</option>
+                                            <option name="Frau" value="Frau">Frau</option>
+                                        </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label required">Vorname</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.companyVorname" [ngClass]="{'validation-error': companyVornameInputError}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label required">Nachname</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.companyName" [ngClass]="{'validation-error': companyNameInputError}" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label required">Photo</label>
-                                            <div class="col-sm-8">
-
-                                                <input type="file" name="photo" required (change)="fileChange(input)" #input />
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <img [attr.src]='theCustomer.photo' alt="" />
-                                        </div>
-                                    </div>
-
                                 </div>
-
-                                <div class="col-sm-6" >
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.abteilung" />
-                                            </div>
-                                        </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label required">Vorname</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.companyVorname" [ngClass]="{'validation-error': companyVornameInputError}" />
                                     </div>
-                                    <div class="row">
-                                        <address-form [address]="address"></address-form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label required">Nachname</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.companyName" [ngClass]="{'validation-error': companyNameInputError}" />
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Telefon</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.phoneNumber">
-                                            </div>
-                                        </div>
-                                    </div><div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Fax</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.faxNumber">
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label required">Photo</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" name="photo" required (change)="fileChange(input)" #input />
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label required">Handy</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.phoneNumber2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label required">E-Mail</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" [(ngModel)]="theCustomer.eMail">
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <img [attr.src]='theCustomer.photo' alt="" />
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="tab2default">
-                            
-                            <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
-                                <div class="panel-heading">Deutschland</div>
-                                <div class="panel-body">
-                                    <cludge-selector></cludge-selector>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label ">Funktion / Abteilung</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.abteilung" />
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
-                                <div class="panel-heading">Ausland</div>
-                                <div class="panel-body">
-                                    <out-of-germany></out-of-germany>
+                            <div class="row">
+                                <address-form [address]="address"></address-form>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Telefon</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.phoneNumber">
+                                    </div>
+                                </div>
+                            </div><div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Fax</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.faxNumber">
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="tab-pane fade" id="tab21default">
-                            <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
-                                <div class="panel-heading">Services types</div>
-                                <div class="panel-body">
-                                    <dienst-selector></dienst-selector>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label required">Handy</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.phoneNumber2">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="tab3default">
-                            <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
-                                <div class="panel-heading">Languages</div>
-                                <div class="panel-body">
-                                    <languages></languages>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label required">E-Mail</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" [(ngModel)]="theCustomer.eMail">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
-                                <div class="panel-heading">Skills</div>
-                                <div class="panel-body"></div>
-                            </div>
-                            <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
-                                <div class="panel-heading">Education</div>
-                                <div class="panel-body"></div>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
-            </div>
+            </tab>
+            <tab [tabTitle]="'Geography'">
+                <div class="tab-pane" id="tab2default">
+                    <div class="container-fluid">
+                        <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
+                            <div class="panel-heading">Deutschland</div>
+                            <div class="panel-body">
+                                <cludge-selector></cludge-selector>
+                            </div>
+                        </div>
+                        <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
+                            <div class="panel-heading">Ausland</div>
+                            <div class="panel-body">
+                                <out-of-germany></out-of-germany>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab [tabTitle]="'Time'">
+                <div class="tab-pane" id="tab21default">
+                    <div class="container-fluid">
+                        <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
+                            <div class="panel-heading">Services types</div>
+                            <div class="panel-body">
+                                <dienst-selector></dienst-selector>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab [tabTitle]="'Skills'">
+                <div class="tab-pane" id="tab3default">
+                    <div class="container-fluid">
+                        <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
+                            <div class="panel-heading">Languages</div>
+                            <div class="panel-body">
+                                <languages></languages>
+                            </div>
+                        </div>
+                        <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
+                            <div class="panel-heading">Skills</div>
+                            <div class="panel-body"></div>
+                        </div>
+                        <div class="panel panel-default col-lg-12" style="display:inline-block; vertical-align: top;">
+                            <div class="panel-heading">Education</div>
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabs>
 
     </div>
 

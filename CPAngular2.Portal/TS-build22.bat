@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Microsoft SDKs\TypeScript\2.2\tsc.exe" --project "C:\prj\Demo\1\CPAngular2.Portal\tsconfig.json" --listEmittedFiles
