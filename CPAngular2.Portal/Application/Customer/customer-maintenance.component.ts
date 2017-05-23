@@ -6,18 +6,7 @@ import { Dienst } from '../entities/dienst.entity';
 import { CustomerService } from '../services/customer.service';
 import { AlertService } from '../services/alert.service';
 import { Alert } from '../entities/alert.entity';
-//import { AddressComponent } from '../shared/address.component';
-//import { InGermany }  from './cludge';
-//import { OutOfGermany }  from './out-of-germany';
-//import { DienstSelector }  from './dienst-selector';
-//import { LanguagesSelector }  from './languages';
-//import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
-
-//import { ImageUploadModule } from 'ng2-imageupload';
-//import { NgUploaderModule } from 'ngx-uploader';
-//import { NgModule }      from '@angular/core';
-//import { BrowserModule } from '@angular/platform-browser';
-//import { AppComponent }  from './app.component';
+import { List } from 'linqts';
 
 export var debugVersion = "?version=" + Date.now();
 
@@ -178,6 +167,14 @@ export class CustomerMaintenanceComponent implements OnInit {
 
     private getCustomerOnSuccess(cust: Customer) {
         this.theCustomer = cust;
+
+        let arr = new List<number>([1, 2, 3, 4, 5])
+            .Where(x => x > 3)
+            .Select(y => y * 2)
+            .ToArray(); // > [8, 10]
+
+        //let qq = new List<Dienst>(cust.custDienst);
+        //var z = qq.Where(x => x.dienstOder == "qqq").ToList();
 
         this.address.addressLine1 = cust.addressLine1;
         this.address.addressLine2 = cust.addressLine2;
