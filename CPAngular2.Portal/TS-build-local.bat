@@ -1,0 +1,1 @@
+"C:\tmp\demo\CPAngular2.Portal\node_modules\.bin\tsc.cmd" --project "C:\tmp\demo\CPAngular2.Portal\tsconfig.json" --listEmittedFiles
