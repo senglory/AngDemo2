@@ -15,11 +15,12 @@
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
 
             'rxjs': 'npm:rxjs',
-
+            'linqts': 'npm:linqts/dist/linq.umd.js',
             'ng2-bootstrap': 'npm:ng2-bootstrap/bundles/ngx-bootstrap.umd.min.js',
             'angular2-material-datepicker': 'npm:angular2-material-datepicker'
         },
         packages: {
+
             application: {
                 format: 'register',
                 main: 'main.js',

@@ -22,7 +22,6 @@
     "font-awesome": "^4.7.0",
     "gulp-bootlint": "^0.8.1",
     "jquery": "^3.2.1",
-    "linqts": "^1.8.2",
     "moment": "^2.18.1",
     "ng2-bootstrap": "^1.6.3",
     "ng2-dropdown": "0.0.4",
@@ -31,7 +30,6 @@
     "rxjs": "^5.2.0",
     "systemjs": "^0.19.47",
     "systemjs-builder": "^0.15.36",
-    "typescript": "^2.2.1",
     "zone.js": "^0.7.8"
   },
   "devDependencies": {
@@ -61,7 +59,7 @@
     "run-sequence": "^1.2.0",
     "systemjs-builder": "^0.15.23",
     "tslint": "^3.7.4",
-    "typescript": "^2.0.0",
+    "typescript": "^2.4.0",
     "typings": "^0.8.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
